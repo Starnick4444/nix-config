@@ -70,9 +70,9 @@
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
 	    home-manager.users = {
-	      ./home-manager/home.nix;
+	      user = import ./home-manager/home.nix;
 	    };
-	  };
+	  }
         ];
       };
     };
