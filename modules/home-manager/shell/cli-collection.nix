@@ -1,4 +1,4 @@
-{ pkgs, ... };
+{ pkgs, ... }:
 
 {
   # Collection of useful CLI apps

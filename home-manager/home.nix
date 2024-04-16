@@ -15,11 +15,11 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-    ../user/app/git/git.nix # My git config
-    ../user/shell/sh.nix # My zsh config
-    ../user/shell/cli-collection.nix # Usefull cli apps
-    ../user/app/virtualization/virtualization.nix # Virtual machines
-    ../user/app/browser/firefox.nix # Browser config
+    ./git/git.nix # My git config
+    ./shell/sh.nix # My zsh config
+    ./shell/cli-collection.nix # Usefull cli apps
+    ./virtualization/virtualization.nix # Virtual machines
+    ./browser/firefox.nix # Browser config
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -55,7 +55,6 @@
   home = {
     username = "starnick";
     homeDirectory = "/home/starnick";
-  };
 
   packages = (with pkgs; [
     # Core
@@ -81,6 +80,7 @@
     mediainfo
     libmediainfo
   ]);
+  };
 
   xdg.enable = true;
   xdg.userDirs = {
