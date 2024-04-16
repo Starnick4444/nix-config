@@ -23,6 +23,14 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
+  
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+    # Import your home-manager configuration
+    starnick = import ../home-manager/home.nix;
+    };
+  };
 
   nixpkgs = {
     # You can add overlays here
