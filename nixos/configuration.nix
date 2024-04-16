@@ -104,14 +104,14 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel" "networkmanager" "audio"];
     };
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {
-    enable = true;
+    enable = false;
     settings = {
       # Forbid root login through SSH.
       PermitRootLogin = "no";
