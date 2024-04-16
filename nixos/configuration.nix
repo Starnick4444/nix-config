@@ -80,20 +80,16 @@
     auto-optimise-store = true;
   };
 
-  # FIXME: Add the rest of your current configuration
-
   # TODO: Set your hostname
   networking.hostName = "nixos";
 
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
+  # TODO: change to systemd boot
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
-    # FIXME: Replace with your username
     starnick = {
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
@@ -103,10 +99,22 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["wheel" "networkmanager" "audio"];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    zsh
+    git
+    home-manager
+    wpa_supplicant
+  ];
+
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

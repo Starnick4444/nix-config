@@ -15,6 +15,11 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
+    ../user/app/git/git.nix # My git config
+    ../user/shell/sh.nix # My zsh config
+    ../user/shell/cli-collection.nix # Usefull cli apps
+    ../user/app/virtualization/virtualization.nix # Virtual machines
+    ../user/app/browser/firefox.nix # Browser config
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -47,19 +52,65 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "starnick";
     homeDirectory = "/home/starnick";
   };
 
+  packages = (with pkgs; [
+    # Core
+    zsh
+    alacritty
+    firefox # consider librewolf
+    dmenu
+    rofi
+    git
+
+    # Office
+    libreoffice-fresh
+    gnome.nautilus
+    gnome.gnome-calendar
+    gnome.gnome-maps
+
+    wine
+
+    spotify
+    vlc
+    obs-studio
+    ffmpeg
+    mediainfo
+    libmediainfo
+  ]);
+
+  xdg.enable = true;
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    music = "/home/starnick/Media/Music";
+    videos = "/home/starnick/Media/Videos";
+    pictures = "/home/starnick/Media/Pictures";
+    download = "/home/starnick/Download";
+    documents = "/home/starnick/Documents";
+    desktop = null;
+    publicShare = null;
+    extraConfig = {
+      XDG_DOTFILES_DIR = "/home/starnick/.dotfiles";
+      XDG_ARCHIVE_DIR = "/home/starnick/Archive";
+      XDG_VM_DIR = "/home/starnick/Machines";
+      XDG_GAME_DIR = "/home/starnick/Media/Games";
+      XDG_GAME_SAVE_DIR = "/home/starnick/Media/Game Saves";
+    };
+    mime.enable = true; #TODO whats this
+    mimeApps.enable = true;
+  };
+
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
+  # TODO move to own file
+  programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
