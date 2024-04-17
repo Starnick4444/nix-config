@@ -12,14 +12,19 @@
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
+    outputs.homeManagerModules.git
+    outputs.homeManagerModules.sh
+    outputs.homeManagerModules.cli-collection
+    outputs.homeManagerModules.virtualization
+    outputs.homeManagerModules.firefox
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-    ./git/git.nix # My git config
-    ./shell/sh.nix # My zsh config
-    ./shell/cli-collection.nix # Usefull cli apps
-    ./virtualization/virtualization.nix # Virtual machines
-    ./browser/firefox.nix # Browser config
+    # ./git/git.nix # My git config
+    # ./shell/sh.nix # My zsh config
+    # ./shell/cli-collection.nix # Usefull cli apps
+    # ./virtualization/virtualization.nix # Virtual machines
+    # ./browser/firefox.nix # Browser config
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
