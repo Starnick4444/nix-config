@@ -11,7 +11,7 @@
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
+    outputs.homeManagerModules.example
     outputs.homeManagerModules.git
     outputs.homeManagerModules.sh
     outputs.homeManagerModules.cli-collection
@@ -20,11 +20,11 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-    # ./git/git.nix # My git config
-    # ./shell/sh.nix # My zsh config
-    # ./shell/cli-collection.nix # Usefull cli apps
-    # ./virtualization/virtualization.nix # Virtual machines
-    # ./browser/firefox.nix # Browser config
+    # ../modules/home-manager/git/git.nix # My git config
+    # ../modules/home-manager/shell/sh.nix # My zsh config
+    # ../modules/home-manager/shell/cli-collection.nix # Usefull cli apps
+    # ../modules/home-manager/virtualization/virtualization.nix # Virtual machines
+    # ../modules/home-manager/browser/firefox.nix # Browser config
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix

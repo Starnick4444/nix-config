@@ -21,12 +21,13 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = {
+  outputs = { 
     self,
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: let
+  } @ inputs:
+  let
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
@@ -54,18 +55,36 @@
     nixosModules = import ./modules/nixos;
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
+    # homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+	specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
+	  
+	  home-manager.nixosModules.home-manager
+	  {
+	    home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPackages = true;
+
+	    home-manager.users.starnick = import ./home-manager/home.nix;
+	  }
         ];
       };
     };
+
+    # homeConfigurations = {
+    #  nixos = home-manager.lib.homeManagerConfiguration {
+    #    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    #    extraSpecialArgs = { inherit inputs; };
+    #	modules = [
+    #	  ./modules/home-manager/default.nix
+    #	];
+    #  };
+    #};
   };
 }

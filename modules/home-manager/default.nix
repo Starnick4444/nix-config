@@ -6,7 +6,7 @@
   git = import ./git/git.nix;
   sh = import ./shell/sh.nix;
   cli-collection = import ./shell/cli-collection.nix;
-  firefox= import ./browser/firefox.nix;
+  firefox = import ./browser/firefox.nix;
   virtualization = import ./virtualization/virtualization.nix;
   alacritty = import ./terminal/alacritty.nix;
   rust = import ./lang/rust/rust.nix;

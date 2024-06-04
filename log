@@ -1,0 +1,662 @@
+warning: Git tree '/home/starnick/nix-config' is dirty
+building the system configuration...
+warning: Git tree '/home/starnick/nix-config' is dirty
+error:
+       … while evaluating call site
+
+       at «none»:0: (source not available)
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:776:24:
+
+          775|     let f = attrPath:
+          776|       zipAttrsWith (n: values:
+             |                        ^
+          777|         let here = attrPath ++ [n]; in
+
+       … while evaluating call site
+
+       at «none»:0: (source not available)
+
+       … while calling 'g'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:595:19:
+
+          594|           g =
+          595|             name: value:
+             |                   ^
+          596|             if isAttrs value && cond value
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:598:20:
+
+          597|               then recurse (path ++ [name]) value
+          598|               else f (path ++ [name]) value;
+             |                    ^
+          599|         in mapAttrs g;
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:248:72:
+
+          247|           # For definitions that have an associated option
+          248|           declaredConfig = mapAttrsRecursiveCond (v: ! isOption v) (_: v: v.value) options;
+             |                                                                        ^
+          249|
+
+       … while evaluating the attribute 'value'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:759:9:
+
+          758|     in warnDeprecation opt //
+          759|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          760|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `system.build.toplevel':
+
+       … while evaluating the attribute 'mergedValue'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:794:5:
+
+          793|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+          794|     mergedValue =
+             |     ^
+          795|       if isDefined then
+
+       … while evaluating the attribute 'values'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:788:9:
+
+          787|       in {
+          788|         values = defs''';
+             |         ^
+          789|         inherit (defs'') highestPrio;
+
+       … while evaluating the attribute 'values'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:887:7:
+
+          886|     in {
+          887|       values = concatMap (def: if getPrio def == highestPrio then [(strip def)] else []) defs;
+             |       ^
+          888|       inherit highestPrio;
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:774:17:
+
+          773|         # Process mkMerge and mkIf properties.
+          774|         defs' = concatMap (m:
+             |                 ^
+          775|           map (value: { inherit (m) file; inherit value; }) (builtins.addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:774:28:
+
+          773|         # Process mkMerge and mkIf properties.
+          774|         defs' = concatMap (m:
+             |                            ^
+          775|           map (value: { inherit (m) file; inherit value; }) (builtins.addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+
+       … while evaluating definitions from `/nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/nixos/modules/system/activation/top-level.nix':
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:775:137:
+
+          774|         defs' = concatMap (m:
+          775|           map (value: { inherit (m) file; inherit value; }) (builtins.addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                                                                         ^
+          776|         ) defs;
+
+       … while calling 'dischargeProperties'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:846:25:
+
+          845|   */
+          846|   dischargeProperties = def:
+             |                         ^
+          847|     if def._type or "" == "merge" then
+
+       … while evaluating the attribute 'value'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:599:44:
+
+          598|       defnsByName' = byName "config" (module: value:
+          599|           [{ inherit (module) file; inherit value; }]
+             |                                            ^
+          600|         ) configs;
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/nixos/modules/system/activation/top-level.nix:131:12:
+
+          130|   # Replace runtime dependencies
+          131|   system = foldr ({ oldDependency, newDependency }: drv:
+             |            ^
+          132|       pkgs.replaceDependency { inherit oldDependency newDependency drv; }
+
+       … while calling 'foldr'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:53:20:
+
+           52|   */
+           53|   foldr = op: nul: list:
+             |                    ^
+           54|     let
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:60:8:
+
+           59|         else op (elemAt list n) (fold' (n + 1));
+           60|     in fold' 0;
+             |        ^
+           61|
+
+       … while calling 'fold''
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:56:15:
+
+           55|       len = length list;
+           56|       fold' = n:
+             |               ^
+           57|         if n == len
+
+       … while evaluating call site
+
+       at «none»:0: (source not available)
+
+       … while calling 'g'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:595:19:
+
+          594|           g =
+          595|             name: value:
+             |                   ^
+          596|             if isAttrs value && cond value
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:598:20:
+
+          597|               then recurse (path ++ [name]) value
+          598|               else f (path ++ [name]) value;
+             |                    ^
+          599|         in mapAttrs g;
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:248:72:
+
+          247|           # For definitions that have an associated option
+          248|           declaredConfig = mapAttrsRecursiveCond (v: ! isOption v) (_: v: v.value) options;
+             |                                                                        ^
+          249|
+
+       … while evaluating the attribute 'value'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:759:9:
+
+          758|     in warnDeprecation opt //
+          759|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          760|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `assertions':
+
+       … while evaluating the attribute 'mergedValue'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:794:5:
+
+          793|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+          794|     mergedValue =
+             |     ^
+          795|       if isDefined then
+
+       … while evaluating the attribute 'values'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:788:9:
+
+          787|       in {
+          788|         values = defs''';
+             |         ^
+          789|         inherit (defs'') highestPrio;
+
+       … while evaluating the attribute 'values'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:887:7:
+
+          886|     in {
+          887|       values = concatMap (def: if getPrio def == highestPrio then [(strip def)] else []) defs;
+             |       ^
+          888|       inherit highestPrio;
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:774:17:
+
+          773|         # Process mkMerge and mkIf properties.
+          774|         defs' = concatMap (m:
+             |                 ^
+          775|           map (value: { inherit (m) file; inherit value; }) (builtins.addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:774:28:
+
+          773|         # Process mkMerge and mkIf properties.
+          774|         defs' = concatMap (m:
+             |                            ^
+          775|           map (value: { inherit (m) file; inherit value; }) (builtins.addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+
+       … while evaluating definitions from `/nix/store/h612476x636dxm9c33flc3msn00ng3il-source/nixos/common.nix':
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:775:137:
+
+          774|         defs' = concatMap (m:
+          775|           map (value: { inherit (m) file; inherit value; }) (builtins.addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                                                                         ^
+          776|         ) defs;
+
+       … while calling 'dischargeProperties'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:846:25:
+
+          845|   */
+          846|   dischargeProperties = def:
+             |                         ^
+          847|     if def._type or "" == "merge" then
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:852:11:
+
+          851|         if def.condition then
+          852|           dischargeProperties def.content
+             |           ^
+          853|         else
+
+       … while calling 'dischargeProperties'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:846:25:
+
+          845|   */
+          846|   dischargeProperties = def:
+             |                         ^
+          847|     if def._type or "" == "merge" then
+
+       … while evaluating the attribute 'content'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:917:14:
+
+          916|     { _type = "if";
+          917|       inherit condition content;
+             |              ^
+          918|     };
+
+       … while evaluating call site
+
+       at /nix/store/h612476x636dxm9c33flc3msn00ng3il-source/nixos/common.nix:103:18:
+
+          102|
+          103|     assertions = flatten (flip mapAttrsToList cfg.users (user: config:
+             |                  ^
+          104|       flip map config.assertions (assertion: {
+
+       … while calling 'flatten'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:138:13:
+
+          137|   */
+          138|   flatten = x:
+             |             ^
+          139|     if isList x
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:140:10:
+
+          139|     if isList x
+          140|     then concatMap (y: flatten y) x
+             |          ^
+          141|     else [x];
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:140:21:
+
+          139|     if isList x
+          140|     then concatMap (y: flatten y) x
+             |                     ^
+          141|     else [x];
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:140:24:
+
+          139|     if isList x
+          140|     then concatMap (y: flatten y) x
+             |                        ^
+          141|     else [x];
+
+       … while calling 'flatten'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:138:13:
+
+          137|   */
+          138|   flatten = x:
+             |             ^
+          139|     if isList x
+
+       … while evaluating call site
+
+       at «none»:0: (source not available)
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:539:10:
+
+          538|     attrs:
+          539|     map (name: f name attrs.${name}) (attrNames attrs);
+             |          ^
+          540|
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:539:16:
+
+          538|     attrs:
+          539|     map (name: f name attrs.${name}) (attrNames attrs);
+             |                ^
+          540|
+
+       … while calling anonymous lambda
+
+       at /nix/store/h612476x636dxm9c33flc3msn00ng3il-source/nixos/common.nix:103:64:
+
+          102|
+          103|     assertions = flatten (flip mapAttrsToList cfg.users (user: config:
+             |                                                                ^
+          104|       flip map config.assertions (assertion: {
+
+       … while evaluating call site
+
+       at /nix/store/h612476x636dxm9c33flc3msn00ng3il-source/nixos/common.nix:104:7:
+
+          103|     assertions = flatten (flip mapAttrsToList cfg.users (user: config:
+          104|       flip map config.assertions (assertion: {
+             |       ^
+          105|         inherit (assertion) assertion;
+
+       … while calling 'flip'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/trivial.nix:138:16:
+
+          137|   */
+          138|   flip = f: a: b: f b a;
+             |                ^
+          139|
+
+       … while evaluating call site
+
+       at «none»:0: (source not available)
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/types.nix:530:22:
+
+          529|       merge = loc: defs:
+          530|         mapAttrs (n: v: v.value) (filterAttrs (n: v: v ? value) (zipAttrsWith (name: defs:
+             |                      ^
+          531|             (mergeDefinitions (loc ++ [name]) elemType defs).optionalValue
+
+       … while evaluating the attribute 'value'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:807:27:
+
+          806|     optionalValue =
+          807|       if isDefined then { value = mergedValue; }
+             |                           ^
+          808|       else {};
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:796:59:
+
+          795|       if isDefined then
+          796|         if all (def: type.check def.value) defsFinal then type.merge loc defsFinal
+             |                                                           ^
+          797|         else let allInvalid = filter (def: ! type.check def.value) defsFinal;
+
+       … while calling 'merge'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/types.nix:751:22:
+
+          750|         check = x: isAttrs x || isFunction x || path.check x;
+          751|         merge = loc: defs:
+             |                      ^
+          752|           (base.extendModules {
+
+       … while evaluating the attribute 'config'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:326:9:
+
+          325|         options = checked options;
+          326|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          327|         _module = checked (config._module);
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:248:28:
+
+          247|           # For definitions that have an associated option
+          248|           declaredConfig = mapAttrsRecursiveCond (v: ! isOption v) (_: v: v.value) options;
+             |                            ^
+          249|
+
+       … while calling 'mapAttrsRecursiveCond'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/attrsets.nix:590:5:
+
+          589|     # Attribute set to recursively map over.
+          590|     set:
+             |     ^
+          591|     let
+
+       … while evaluating the attribute 'matchedOptions'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:668:14:
+
+          667|     in {
+          668|       inherit matchedOptions;
+             |              ^
+          669|
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:590:21:
+
+          589|       # an attrset 'name' => list of submodules that declare ‘name’.
+          590|       declsByName = byName "options" (module: option:
+             |                     ^
+          591|           [{ inherit (module) _file; options = option; }]
+
+       … while calling 'byName'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:569:25:
+
+          568|       */
+          569|       byName = attr: f: modules:
+             |                         ^
+          570|         zipAttrsWith (n: concatLists)
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:240:33:
+
+          239|           ({ inherit lib options config specialArgs; } // specialArgs);
+          240|         in mergeModules prefix (reverseList collected);
+             |                                 ^
+          241|
+
+       … while calling 'reverseList'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/lists.nix:406:17:
+
+          405|   */
+          406|   reverseList = xs:
+             |                 ^
+          407|     let l = length xs; in genList (n: elemAt xs (l - n - 1)) l;
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:235:25:
+
+          234|       merged =
+          235|         let collected = collectModules
+             |                         ^
+          236|           class
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:449:37:
+
+          448|
+          449|     in modulesPath: initialModules: args:
+             |                                     ^
+          450|       filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:450:7:
+
+          449|     in modulesPath: initialModules: args:
+          450|       filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+             |       ^
+          451|
+
+       … while calling 'filterModules'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:417:36:
+
+          416|       # modules recursively. It returns the final list of unique-by-key modules
+          417|       filterModules = modulesPath: { disabled, modules }:
+             |                                    ^
+          418|         let
+
+       … while evaluating call site
+
+       at «none»:0: (source not available)
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:443:31:
+
+          442|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          443|           keyFilter = filter (attrs: ! elem attrs.key disabledKeys);
+             |                               ^
+          444|         in map (attrs: attrs.module) (builtins.genericClosure {
+
+       … while evaluating the attribute 'disabled'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:399:13:
+
+          398|           collectResults = modules: {
+          399|             disabled = concatLists (catAttrs "disabled" modules);
+             |             ^
+          400|             inherit modules;
+
+       … while evaluating the attribute 'disabled'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:399:13:
+
+          398|           collectResults = modules: {
+          399|             disabled = concatLists (catAttrs "disabled" modules);
+             |             ^
+          400|             inherit modules;
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:404:22:
+
+          403|           let
+          404|             module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                      ^
+          405|             collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:369:11:
+
+          368|         else
+          369|           m: m;
+             |           ^
+          370|
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:404:35:
+
+          403|           let
+          404|             module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                                   ^
+          405|             collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling 'loadModule'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:340:53:
+
+          339|       # Like unifyModuleSyntax, but also imports paths and calls functions if necessary
+          340|       loadModule = args: fallbackFile: fallbackKey: m:
+             |                                                     ^
+          341|         if isFunction m then
+
+       … while evaluating call site
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:341:12:
+
+          340|       loadModule = args: fallbackFile: fallbackKey: m:
+          341|         if isFunction m then
+             |            ^
+          342|           unifyModuleSyntax fallbackFile fallbackKey (applyModuleArgs fallbackKey m args)
+
+       … while calling 'isFunction'
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/trivial.nix:448:16:
+
+          447|   */
+          448|   isFunction = f: builtins.isFunction f ||
+             |                ^
+          449|     (f ? __functor && isFunction (f.__functor f));
+
+       … while evaluating call site
+
+       at «none»:0: (source not available)
+
+       … while calling anonymous lambda
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:510:44:
+
+          509|       context = name: ''while evaluating the module argument `${name}' in "${key}":'';
+          510|       extraArgs = builtins.mapAttrs (name: _:
+             |                                            ^
+          511|         builtins.addErrorContext (context name)
+
+       … while evaluating the module argument `outputs' in ":anon-5:anon-1":
+
+       error: infinite recursion encountered
+
+       at /nix/store/0yzh1r9mhsr4vp5w96y3i0jgz3m2qzv6-source/lib/modules.nix:512:28:
+
+          511|         builtins.addErrorContext (context name)
+          512|           (args.${name} or config._module.args.${name})
+             |                            ^
+          513|       ) (lib.functionArgs f);
