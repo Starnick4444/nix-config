@@ -20,9 +20,9 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-    # ../modules/home-manager/git/git.nix # My git config
+    ../modules/home-manager/git/git.nix # My git config
     # ../modules/home-manager/shell/sh.nix # My zsh config
-    # ../modules/home-manager/shell/cli-collection.nix # Usefull cli apps
+    ../modules/home-manager/shell/cli-collection.nix # Usefull cli apps
     # ../modules/home-manager/virtualization/virtualization.nix # Virtual machines
     # ../modules/home-manager/browser/firefox.nix # Browser config
 

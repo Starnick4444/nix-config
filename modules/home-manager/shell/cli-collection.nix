@@ -5,10 +5,15 @@
   home.packages = with pkgs; [
     # Command Line
     timer
-    bat eza fd btop ripgrep
+    bat
+    eza
+    fd
+    btop
+    ripgrep
     rsync
     unzip
     tmux
-    vim neovim
+    vim
+    neovim
   ];
 }
