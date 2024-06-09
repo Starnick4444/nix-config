@@ -19,19 +19,19 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-    # inputs.home-manager.nixosModules.home-manager
+    inputs.home-manager.nixosModules.home-manager
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
   
-  # home-manager = {
-  #   extraSpecialArgs = { inherit inputs outputs; };
-  #   users = {
-  #   # Import your home-manager configuration
-  #   starnick = import ../home-manager/home.nix;
-  #   };
-  # };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+    # Import your home-manager configuration
+    starnick = import ../home-manager/home.nix;
+    };
+  };
 
   nixpkgs = {
     # You can add overlays here

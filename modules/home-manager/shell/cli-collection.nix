@@ -14,6 +14,7 @@
     unzip
     tmux
     vim
-    neovim
+    tree
+    # neovim
   ];
 }
