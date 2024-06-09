@@ -10,4 +10,5 @@
   virtualization = import ./virtualization/virtualization.nix;
   alacritty = import ./terminal/alacritty.nix;
   rust = import ./lang/rust/rust.nix;
+  hrprland = import ./wm/hyprland.nix;
 }
