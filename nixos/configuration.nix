@@ -86,11 +86,11 @@
   networking.hostName = "nixos";
 
   # TODO: change to systemd boot
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "nodev";
+  # boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   users.users = {
     starnick = {
@@ -113,17 +113,19 @@
     git
     home-manager
     wpa_supplicant
+    kitty
   ];
 
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
-  # programs.hyprland = {
-  #   enable = true;
+  programs.hyprland = {
+    enable = true;
   #   package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  #   xwayland.enable = true;
-  # };
+    xwayland.enable = true;
+  };
+  programs.hyprlock.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
