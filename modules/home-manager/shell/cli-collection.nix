@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Collection of useful CLI apps
   home.packages = with pkgs; [
     # Command Line

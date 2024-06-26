@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   myAliases = {
     ls = "eza -l";
     cat = "bat";
@@ -7,8 +6,7 @@ let
     # Unclear if this works
     nixos-rebuild = "systemd-run --no-ask-password --uid=0 --system --scope -p MemoryLimit=16000M -p CPUQuota=80% nixos-rebuild";
   };
-in
-{
+in {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -18,6 +16,8 @@ in
   };
 
   home.packages = with pkgs; [
-    bat eza fd
+    bat
+    eza
+    fd
   ];
 }

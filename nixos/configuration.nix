@@ -24,12 +24,12 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
-  
+
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users = {
-    # Import your home-manager configuration
-    starnick = import ../home-manager/home.nix;
+      # Import your home-manager configuration
+      starnick = import ../home-manager/home.nix;
     };
   };
 
@@ -119,13 +119,13 @@
     kitty
   ];
 
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
   programs.hyprland = {
     enable = true;
-  #   package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    #   package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     xwayland.enable = true;
   };
   programs.hyprlock.enable = true;

@@ -62,30 +62,30 @@
     username = "starnick";
     homeDirectory = "/home/starnick";
 
-  packages = (with pkgs; [
-    # Core
-    zsh
-    alacritty
-    firefox # consider librewolf
-    dmenu
-    rofi
-    git
+    packages = with pkgs; [
+      # Core
+      zsh
+      alacritty
+      firefox # consider librewolf
+      dmenu
+      rofi
+      git
 
-    # Office
-    libreoffice-fresh
-    gnome.nautilus
-    gnome.gnome-calendar
-    gnome.gnome-maps
+      # Office
+      libreoffice-fresh
+      gnome.nautilus
+      gnome.gnome-calendar
+      gnome.gnome-maps
 
-    wine
+      wine
 
-    spotify
-    vlc
-    obs-studio
-    ffmpeg
-    mediainfo
-    libmediainfo
-  ]);
+      spotify
+      vlc
+      obs-studio
+      ffmpeg
+      mediainfo
+      libmediainfo
+    ];
   };
 
   xdg.enable = true;

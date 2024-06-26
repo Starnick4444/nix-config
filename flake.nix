@@ -13,7 +13,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, hyprland, ... }@inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    hyprland,
+    ...
+  } @ inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [

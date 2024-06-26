@@ -1,7 +1,10 @@
-{ config, pkgs, userSettings, ... }:
-
 {
-  home.packages = [ pkgs.git ];
+  config,
+  pkgs,
+  userSettings,
+  ...
+}: {
+  home.packages = [pkgs.git];
   programs.git.enable = true;
   programs.git.userName = "Starnick4444";
   programs.git.userEmail = "nemes.bence1@gmail.com";
