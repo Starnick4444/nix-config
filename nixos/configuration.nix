@@ -1,4 +1,4 @@
-# This is your system's configuration file.
+#  This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
@@ -64,7 +64,7 @@
 
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = ["/etc/nix/path"];
+  # nix.nixPath = ["/etc/nix/path"];
   # environment.etc =
   #   lib.mapAttrs'
   #   (name: value: {
@@ -91,6 +91,9 @@
   # boot.loader.grub.useOSProber = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # use latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   users.users = {
     starnick = {
