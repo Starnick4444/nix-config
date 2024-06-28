@@ -21,7 +21,7 @@
     # ./users.nix
     inputs.home-manager.nixosModules.home-manager
 
-    ../modules/nixos/default.nix
+    ../modules/nixos/hyprland.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix

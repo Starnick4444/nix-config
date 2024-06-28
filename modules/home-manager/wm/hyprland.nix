@@ -17,7 +17,7 @@
   home.packages = with pkgs; [
     kitty
     hyprpaper
-    thunar # file explorer
+    xfce.thunar # file explorer
     pavucontrol # sound control
     waybar # status bar
     # TODO screenshot tool

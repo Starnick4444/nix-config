@@ -14,7 +14,7 @@
     vim
     tree
     dooit
-    streamio
+    stremio
     # neovim
   ];
 }
