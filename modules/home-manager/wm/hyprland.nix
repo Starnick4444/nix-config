@@ -13,6 +13,10 @@
     settings = {};
     extraConfig = (builtins.readFile ./hyprland.conf) + (builtins.readFile ./keybindings.conf) + (builtins.readFile ./windowrules.conf) + (builtins.readFile ./animations.conf);
   };
+  programs.hyprlock = {
+    enable = true;
+    extraConfig = (builtins.readFile ./hyprlock.conf);
+  };
 
   home.packages = with pkgs; [
     kitty

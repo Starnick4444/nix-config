@@ -21,19 +21,33 @@
     };
   };
 
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "us";
-      variant = "intl";
-    };
-    displayManager.sddm = {
+  environment.systemPackages = with pkgs; [
+    (sddm-chili-theme.override {
+      themeConfig = {
+        ScreenWidth = 1920;
+	ScreenHeight = 1080;
+	blur = true;
+	recursiveBlurLoops = 3;
+	recursiveBlurRadius = 5;
+      };
+    })
+  ];
+
+  services.displayManager = {
+    sddm = {
       enable = true;
       wayland.enable = true;
-      enableHidpi = true;
-      theme = "chili";
-      package = pkgs.sddm;
     };
+    autoLogin.user = "starnick";
+  };
+
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.dconf ];
+  };
+
+  programs.dconf = {
+    enable = true;
   };
 
   # sound
