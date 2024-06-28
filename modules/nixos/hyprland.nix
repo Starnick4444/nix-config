@@ -21,6 +21,21 @@
     };
   };
 
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "intl";
+    };
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      enableHidpi = true;
+      theme = "chili";
+      package = pkgs.sddm;
+    };
+  };
+
   # sound
   security.rtkit.enable = true;
   services.pipewire = {
