@@ -65,19 +65,19 @@
     packages = with pkgs; [
       # Core
       zsh
-      alacritty
+      kitty
       firefox # consider librewolf
-      dmenu
-      rofi
       git
 
       # Office
       libreoffice-fresh
-      gnome.nautilus
-      gnome.gnome-calendar
-      gnome.gnome-maps
 
       wine
+
+      # social
+      discord
+
+      ags
 
       spotify
       vlc

@@ -13,6 +13,8 @@
     tmux
     vim
     tree
+    dooit
+    streamio
     # neovim
   ];
 }

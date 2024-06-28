@@ -21,6 +21,8 @@
     # ./users.nix
     inputs.home-manager.nixosModules.home-manager
 
+    ../modules/nixos/default.nix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
@@ -78,8 +80,6 @@
     experimental-features = "nix-command flakes";
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   # TODO: Set your hostname
@@ -117,18 +117,31 @@
     home-manager
     wpa_supplicant
     kitty
+
+    # dev
+    git
+    neovim
+    gh
+    unzip
+
+    # sound and video
+    pamixer
+    brightnessctl
+    playerctl
+
+    # file manager
+    yazi
+
+    # bluetooth
+    bluez-tools
+    blueberry
+
+    # wm
   ];
 
   environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    #   package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    xwayland.enable = true;
-  };
-  programs.hyprlock.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
