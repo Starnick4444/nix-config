@@ -22,6 +22,7 @@
     inputs.home-manager.nixosModules.home-manager
 
     ../modules/nixos/hyprland.nix
+    ../modules/nixos/games.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
