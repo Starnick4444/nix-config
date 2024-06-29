@@ -34,7 +34,7 @@
     };
     font = {
       name = "FiraCode Nerd Font";
-      size = 11;
+      size = 10;
     };
     gtk3.extraConfig = {
       gtk-xft-antialias = 1;

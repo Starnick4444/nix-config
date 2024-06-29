@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
-  # programs.steam.enable = true;
-  # environment.systemPackages = [ pkgs.steam ];
+  programs.steam.enable = true;
+  environment.systemPackages = [ pkgs.steam ];
 }
