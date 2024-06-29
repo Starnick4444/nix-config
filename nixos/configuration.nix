@@ -67,7 +67,7 @@
 
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
-  # nix.nixPath = ["/etc/nix/path"];
+  nix.nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos" ];
   # environment.etc =
   #   lib.mapAttrs'
   #   (name: value: {
