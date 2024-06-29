@@ -8,6 +8,7 @@
 
     settings = {
       mainBar = {
+        name = "main";
         layer = "top";
         position = "top";
         margin-left = 10;
@@ -103,7 +104,8 @@
           format = "|";
         };
       };
-      clockBar = {
+      timerBar = {
+        name = "timer";
         layer = "bottom";
         position = "bottom";
         exclusive = false;
@@ -112,11 +114,11 @@
         margin-top = 0;
         margin-bottom = 80;
 
-        modules-left = ["clock"];
+        modules-left = ["timer"];
         modules-center = [];
         modules-right = [];
 
-        clock = {
+        timer = {
           interval = 60;
           format = "{:%I:%M %p \n<span size='xx-small'>%a %b %d </span>}";
         };
@@ -154,14 +156,14 @@
               font-size: 14px;
             }
 
-            window#waybar {
+            window.main#waybar {
               color: @text;
               background: @base00;
               transition-property: background-color;
               transition-duration: 0.5s;
             }
 
-            window#waybar.empty {
+            window.main#waybar.empty {
               opacity: 0.3;
             }
 
@@ -285,7 +287,11 @@
               background-color: @red;
             }
 
-      #clock {
+	    window.timer#waybar {
+	      background: 00;
+	    }
+
+      #timer {
           margin-left: 100px;
           font-weight: 300;
           font-size: 48pt;
