@@ -22,6 +22,7 @@
     inputs.home-manager.nixosModules.home-manager
 
     ../modules/nixos/hyprland.nix
+    ../modules/nixos/games.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -138,6 +139,18 @@
     blueberry
 
     # wm
+  ];
+
+  # Gtk config
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ];})
+    fira-code
+    noto-fonts-emoji
   ];
 
   environment.shells = with pkgs; [zsh];

@@ -27,8 +27,8 @@
     ../modules/home-manager/wm/hyprlock.nix # Hyprlock config
     ../modules/home-manager/wm/waybar.nix # Waybar config
     ../modules/home-manager/gtk/gtk.nix # Theme and icons
-    # ../modules/home-manager/virtualization/virtualization.nix # Virtual machines
-    # ../modules/home-manager/browser/firefox.nix # Browser config
+    ../modules/home-manager/virtualization/virtualization.nix # Virtual machines
+    ../modules/home-manager/browser/firefox.nix # Browser config
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix

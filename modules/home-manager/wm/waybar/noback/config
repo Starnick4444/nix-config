@@ -9,7 +9,7 @@
 
     "modules-left": ["custom/power",  "hyprland/workspaces", "custom/tomato"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "temperature", "memory", "disk", "pulseaudio", "network", "tray"],
+    "modules-right": ["cpu", "temperature", "memory", "pulseaudio", "network", "tray"],
 
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -54,12 +54,8 @@
         "interval": 2,
         "format": "  {}%"
     },
-   "disk": {
-        "interval": 45,
-        "format": "󰋊 {percentage_used}%"
-    },
     "network": {
-        "format-wifi": "  {ipaddr}",
+        "format-wifi": " ",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format": "still disconnected",
