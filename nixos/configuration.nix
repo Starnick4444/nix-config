@@ -67,7 +67,7 @@
 
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos" ];
+  nix.nixPath = ["nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos"];
   # environment.etc =
   #   lib.mapAttrs'
   #   (name: value: {
@@ -144,11 +144,11 @@
   # Gtk config
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ];})
+    (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
     fira-code
     noto-fonts-emoji
   ];
