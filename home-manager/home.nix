@@ -25,6 +25,7 @@
     ../modules/home-manager/shell/cli-collection.nix # Usefull cli apps
     ../modules/home-manager/wm/hyprland.nix # Hyprland config
     ../modules/home-manager/wm/hyprlock.nix # Hyprlock config
+    ../modules/home-manager/wm/waybar.nix # Waybar config
     # ../modules/home-manager/virtualization/virtualization.nix # Virtual machines
     # ../modules/home-manager/browser/firefox.nix # Browser config
 

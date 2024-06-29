@@ -25,10 +25,10 @@
     (sddm-chili-theme.override {
       themeConfig = {
         ScreenWidth = 1920;
-	ScreenHeight = 1080;
-	blur = true;
-	recursiveBlurLoops = 3;
-	recursiveBlurRadius = 5;
+        ScreenHeight = 1080;
+        blur = true;
+        recursiveBlurLoops = 3;
+        recursiveBlurRadius = 5;
       };
     })
   ];
@@ -43,7 +43,7 @@
 
   services.dbus = {
     enable = true;
-    packages = [ pkgs.dconf ];
+    packages = [pkgs.dconf];
   };
 
   programs.dconf = {
