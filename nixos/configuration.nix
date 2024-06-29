@@ -84,6 +84,7 @@
 
   # TODO: Set your hostname
   networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
 
   # TODO: change to systemd boot
   # boot.loader.grub.enable = true;
