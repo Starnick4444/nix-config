@@ -9,10 +9,7 @@
   home.packages = with pkgs; [
     inotify-tools
     tomato-c
-  ];
-  home.file = {
-    ".config/scripts/launch-waybar.sh" = {
-      text = ''
+    (pkgs.writeShellScriptBin "launch-waybar" ''
         CONFIG_FILES="$HOME/.config/waybar/noback/config $HOME/.config/waybar/noback/desc-colors.css $HOME/.config/waybar/noback/style.css $HOME/.config/waybar/desktopclock/config $HOME/.config/waybar/desktopclock/style.css $HOME/.config/waybar/desktopclock/desc-colors.css "
 
         trap "pkill waybar" EXIT
@@ -23,9 +20,8 @@
           inotifywait -e create,modify $CONFIG_FILES
           pkill waybar
         done
-      '';
-      executable = true;
-    };
-    ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./waybar;
+    '')
+  ];
+  home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./waybar;
   };
 }
