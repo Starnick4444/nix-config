@@ -12,6 +12,7 @@
 
       # File tree
       # nvim-tree-lua # not sure if i want it yet
+      nvim-web-devicons
 
       # Status line
       feline-nvim
