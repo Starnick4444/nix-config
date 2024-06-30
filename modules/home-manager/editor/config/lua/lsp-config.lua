@@ -117,6 +117,26 @@ local function default_lsp_setup(module)
 end
 -- Bash
 default_lsp_setup("bashls")
+-- Rust
+nvim_lsp.rust_analyzer.setup({
+	settings = {
+		["rust-analyzer"] = {
+			cargo = {
+				allFeatures = true,
+			},
+			imports = {
+				group = {
+					enable = false,
+				},
+			},
+			completion = {
+				postfix = {
+					enable = false,
+				},
+			},
+		},
+	},
+})
 -- Haskell
 default_lsp_setup("hls")
 -- Lua
