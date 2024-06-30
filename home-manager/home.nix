@@ -23,6 +23,7 @@
     ../modules/home-manager/git/git.nix # My git config
     ../modules/home-manager/shell/sh.nix # My zsh config
     ../modules/home-manager/shell/cli-collection.nix # Usefull cli apps
+    ../modules/home-manager/rust/rust.nix # Rust
     ../modules/home-manager/wm/hyprland.nix # Hyprland config
     ../modules/home-manager/wm/hyprlock.nix # Hyprlock config
     ../modules/home-manager/wm/waybar.nix # Waybar config
