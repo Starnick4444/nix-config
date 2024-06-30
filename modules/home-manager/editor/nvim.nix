@@ -11,7 +11,12 @@
       vim-rooter
     ];
 
-    extraConfig = builtins.readFile ./init.lua;
+    extraConfig = ":luafile ~/.config/nvim/lua/init.lua";
   };
-  environment.variables.EDITOR = "nvim";
+
+  xdg.configFile.nvim = {
+    source = ./config;
+    recursive = true;
+  };
+  # environment.variables.EDITOR = "nvim";
 }
