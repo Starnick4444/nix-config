@@ -30,6 +30,7 @@
     ../modules/home-manager/gtk/gtk.nix # Theme and icons
     ../modules/home-manager/virtualization/virtualization.nix # Virtual machines
     ../modules/home-manager/browser/firefox.nix # Browser config
+    ../modules/home-manager/editor/nvim.nix # Nvim config
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
