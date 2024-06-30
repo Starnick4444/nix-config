@@ -22,9 +22,5 @@
     waybar # status bar
     # TODO screenshot tool
     # TODO clipboard manager
-    (pkgs.writeShellScriptBin "startup-apps" ''
-    discord &
-    spotify &
-    '')
   ];
 }
