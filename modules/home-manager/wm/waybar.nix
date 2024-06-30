@@ -18,7 +18,7 @@
         margin-bottom = -15;
         modules-left = ["custom/power" "hyprland/workspaces" "custom/tomato"];
         modules-center = ["clock"];
-        modules-right = ["cpu" "temperature" "memory" "pulseaudio" "network" "tray"];
+        modules-right = [ "battery" "cpu" "temperature" "memory" "pulseaudio" "network" "tray"];
         "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -58,6 +58,11 @@
           format = "  {usage}%";
           tooltip = false;
         };
+	battery = {
+	  interval = 30;
+	  format = "{capacity}%";
+	  tooltip = false;
+	};
         memory = {
           interval = 2;
           format = "  {}%";
@@ -230,6 +235,7 @@
              }
              #custom-tomato,
              #cpu,
+	     #battery,
              #temperature,
              #memory,
              #disk {
