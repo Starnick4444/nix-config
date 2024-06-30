@@ -14,7 +14,7 @@
     extraConfig = (builtins.readFile ./hyprland.conf) + (builtins.readFile ./keybindings.conf) + (builtins.readFile ./windowrules.conf) + (builtins.readFile ./animations.conf);
   };
 
-  programs.hypridle = {
+  services.hypridle = {
     enable = true;
 
     settings = {
