@@ -111,14 +111,7 @@
       XDG_GAME_DIR = "/home/starnick/Media/Games";
       XDG_GAME_SAVE_DIR = "/home/starnick/Media/Game Saves";
     };
-    # mime.enable = true; #TODO whats this
-    # mimeApps.enable = true;
   };
-
-  # Add stuff for your user as you see fit:
-  # TODO move to own file
-  programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
