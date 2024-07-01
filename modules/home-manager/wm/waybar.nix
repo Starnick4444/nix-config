@@ -130,179 +130,179 @@
       };
     };
     style = ''
-             /*
-             *
-             * Base16 Outrun Dark
-             * Author: Hugo Delahousse (http://github.com/hugodelahousse/)
-             *
-             */
+                   /*
+                   *
+                   * Base16 Outrun Dark
+                   * Author: Hugo Delahousse (http://github.com/hugodelahousse/)
+                   *
+                   */
 
-             @define-color bg01 #00002a;
-             @define-color surface1 #20204a;
-             @define-color surface2 #30305a;
-             @define-color bg02 #50507a;
-             @define-color surface3 #b0b0da;
-             @define-color text #d0d0fa;
-             @define-color surface4 #e0e0ff;
-             @define-color white #f5f5ff;
-             @define-color red #ff4242;
-             @define-color accent1 #fc8d28;
-             @define-color yellow #f3e877;
-             @define-color green #59f176;
-             @define-color cyan #0ef0f0;
-             @define-color blue #66b0ff;
-             @define-color magneta #f10596;
-             @define-color accent2 #f003ef;
+      	     @define-color base00: 381f21;
+      @define-color base01: 594244;
+             @define-color base02: 7a6566;
+             @define-color base03: 9b8889;
+             @define-color base04: bbabac;
+             @define-color base05: dccece;
+             @define-color base06: e1d5d5;
+             @define-color base07: e6dddd;
+             @define-color base08: 447cb0;
+             @define-color base09: 46a2d0;
+             @define-color base0A: e13447;
+             @define-color base0B: d4464f;
+             @define-color base0C: c35467;
+             @define-color base0D: ef1518;
+             @define-color base0E: 9c818d;
+             @define-color base0F: ee1616;
 
-             * {
-               min-height: 0;
-               font-family: FiraCode Nerd Font , "Hack Nerd Font", FontAwesome, Roboto,
-                 Helvetica, Arial, sans-serif;
-               font-size: 14px;
+                   * {
+                     min-height: 0;
+                     font-family: FiraCode Nerd Font , "Hack Nerd Font", FontAwesome, Roboto,
+                       Helvetica, Arial, sans-serif;
+                     font-size: 14px;
+                   }
+
+                   window.main#waybar {
+                     color: @base06;
+                     background: @base00;
+                     transition-property: background-color;
+                     transition-duration: 0.5s;
+                   }
+
+                   window.main#waybar.empty {
+                     opacity: 0.3;
+                   }
+
+                   .modules-left {
+                       border: none;
+                   }
+
+                   .modules-right {
+                     border: none;
+                   }
+
+                   .modules-center {
+                     border: none;
+                   }
+
+                   button {
+                     border: none;
+                     border-radius: 0;
+                   }
+
+                   button:hover {
+                     background: @base03;
+                     border-radius: 90px;
+                   }
+
+                   #custom-power {
+                     color: @base01;
+                     font-weight: 600;
+                     margin-right: 10px;
+                     padding-left: 15px;
+                     padding-right: 19px;
+                     border-radius: 90px;
+                     background: @base0E;
+                   }
+
+                   #workspaces {
+                     font-weight: 600;
+                     margin-right: 10px;
+                     padding: 5px 10px;
+                     border-radius: 90px;
+                     background: @base01;
+                   }
+
+                   #workspaces button {
+                     color: @base0F;
+                       font-weight: 600;
+                           margin: 0px;
+                           padding: 0px 5px;
+                   }
+
+                   #workspaces button.urgent {
+                     color: @base09;
+                   }
+                   #workspaces button.empty {
+                     color: @base03;
+                   }
+
+                   #workspaces button.active {
+                     color: @base06;
+                   }
+
+                   #workspaces button.focused {
+                     color: @base0C;
+                   }
+                   #custom-tomato,
+                   #cpu,
+            #battery,
+                   #temperature,
+                   #memory,
+                   #disk {
+                     color: @base0F;
+                     font-weight: 600;
+                     margin-right: 10px;
+                     padding: 6px 15px;
+                     border-radius: 90px;
+                     background: @base01;
+                   }
+
+                   #pulseaudio {
+                     color: @base01;
+                     font-weight: 600;
+                     margin-right: 10px;
+                     padding: 6px 15px;
+                     border-radius: 90px;
+                     background: @base0A;
+                   }
+
+                   #network {
+                     color: @base01;
+                     font-weight: 600;
+                     margin-right: 10px;
+                     padding: 6px 15px;
+                     border-radius: 90px;
+                     background: @base0D;
+                   }
+
+                   #tray {
+                     color: @base06;
+                     font-weight: 600;
+                     padding: 6px 15px;
+                     border-radius: 90px;
+                     background: @base01;
+                   }
+
+                   #clock {
+                     color: @base0F;
+                     font-weight: 600;
+                     margin-right: 10px;
+                     padding: 6px 15px;
+                     border-radius: 90px;
+                     background: @base01;
+                   }
+
+                   #custom-sepp {
+                     color: @base03;
+                     font-size: 20px;
+                     padding-left: 4px;
+                     padding-right: 10px;
+                   }
+
+                   #network.disconnected {
+                     background-color: @base09;
+                   }
+
+            window.timer#waybar {
+              background: 00;
+            }
+
+             #timer {
+                 margin-left: 100px;
+                 font-weight: 300;
+                 font-size: 48pt;
+                 color: @base05;
              }
-
-             window.main#waybar {
-               color: @text;
-               background: @base00;
-               transition-property: background-color;
-               transition-duration: 0.5s;
-             }
-
-             window.main#waybar.empty {
-               opacity: 0.3;
-             }
-
-             .modules-left {
-                 border: none;
-             }
-
-             .modules-right {
-               border: none;
-             }
-
-             .modules-center {
-               border: none;
-             }
-
-             button {
-               border: none;
-               border-radius: 0;
-             }
-
-             button:hover {
-               background: @surface2;
-               border-radius: 90px;
-             }
-
-             #custom-power {
-               color: @bg01;
-               font-weight: 600;
-               margin-right: 10px;
-               padding-left: 15px;
-               padding-right: 19px;
-               border-radius: 90px;
-               background: @magneta;
-             }
-
-             #workspaces {
-               font-weight: 600;
-               margin-right: 10px;
-               padding: 5px 10px;
-               border-radius: 90px;
-               background: @bg01;
-             }
-
-             #workspaces button {
-               color: @accent2;
-                 font-weight: 600;
-                     margin: 0px;
-                     padding: 0px 5px;
-             }
-
-             #workspaces button.urgent {
-               color: @red;
-             }
-             #workspaces button.empty {
-               color: @surface2;
-             }
-
-             #workspaces button.active {
-               color: @text;
-             }
-
-             #workspaces button.focused {
-               color: @green;
-             }
-             #custom-tomato,
-             #cpu,
-      #battery,
-             #temperature,
-             #memory,
-             #disk {
-               color: @accent2;
-               font-weight: 600;
-               margin-right: 10px;
-               padding: 6px 15px;
-               border-radius: 90px;
-               background: @bg01;
-             }
-
-             #pulseaudio {
-               color: @bg01;
-               font-weight: 600;
-               margin-right: 10px;
-               padding: 6px 15px;
-               border-radius: 90px;
-               background: @accent1;
-             }
-
-             #network {
-               color: @bg01;
-               font-weight: 600;
-               margin-right: 10px;
-               padding: 6px 15px;
-               border-radius: 90px;
-               background: @blue;
-             }
-
-             #tray {
-               color: @text;
-               font-weight: 600;
-               padding: 6px 15px;
-               border-radius: 90px;
-               background: @bg01;
-             }
-
-             #clock {
-               color: @accent2;
-               font-weight: 600;
-               margin-right: 10px;
-               padding: 6px 15px;
-               border-radius: 90px;
-               background: @bg01;
-             }
-
-             #custom-sepp {
-               color: @surface2;
-               font-size: 20px;
-               padding-left: 4px;
-               padding-right: 10px;
-             }
-
-             #network.disconnected {
-               background-color: @red;
-             }
-
-      window.timer#waybar {
-        background: 00;
-      }
-
-       #timer {
-           margin-left: 100px;
-           font-weight: 300;
-           font-size: 48pt;
-           color: @surface3;
-       }
     '';
   };
   home.packages = with pkgs; [

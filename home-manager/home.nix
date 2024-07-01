@@ -20,20 +20,10 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-    ../modules/home-manager/git/git.nix # My git config
-    ../modules/home-manager/shell/sh.nix # My zsh config
-    ../modules/home-manager/shell/cli-collection.nix # Usefull cli apps
-    ../modules/home-manager/lang/rust/rust.nix # Rust
-    ../modules/home-manager/wm/hyprland.nix # Hyprland config
-    ../modules/home-manager/wm/hyprlock.nix # Hyprlock config
-    ../modules/home-manager/wm/waybar.nix # Waybar config
-    ../modules/home-manager/gtk/gtk.nix # Theme and icons
-    ../modules/home-manager/virtualization/virtualization.nix # Virtual machines
-    ../modules/home-manager/browser/firefox.nix # Browser config
-    ../modules/home-manager/editor/nvim.nix # Nvim config
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ../modules/home-manager/default.nix
   ];
 
   nixpkgs = {
