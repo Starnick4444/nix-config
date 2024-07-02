@@ -146,7 +146,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono" "SauceCodePro"];})
+    nerdfonts
     fira-code
     noto-fonts-emoji
   ];

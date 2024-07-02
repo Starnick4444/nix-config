@@ -82,7 +82,7 @@ in {
 
     historySubstringSearch.enable = true;
     history = {
-      expireDubplicatesFirst = true;
+      expireDuplicatesFirst = true;
       extended = true;
     };
 
