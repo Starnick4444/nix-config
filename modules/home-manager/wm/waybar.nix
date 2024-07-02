@@ -77,8 +77,8 @@
         };
         pulseaudio = {
           format = "{icon} {volume}%";
-          format-base0Dtooth = "{icon} {volume}% 󰂯";
-          format-base0Dtooth-muted = "󰖁 {icon} 󰂯";
+          format-bluetooth = "{icon} {volume}% 󰂯";
+          format-bluetooth-muted = "󰖁 {icon} 󰂯";
           format-muted = "󰖁 {format_source}";
           format-source = "{volume}% ";
           format-source-muted = "";
@@ -162,7 +162,7 @@
 
       window#waybar {
         color: @base05;
-        background: #031A16;
+        /* background: #031A16; */
         transition-property: background-color;
         transition-duration: 0.5s;
       }
@@ -191,16 +191,6 @@
       button:hover {
         background: @base02;
         border-radius: 90px;
-      }
-
-      #custom-power {
-        color: @base00;
-        font-weight: 600;
-        margin-right: 10px;
-        padding-left: 15px;
-        padding-right: 19px;
-        border-radius: 90px;
-        background: @base0E;
       }
 
       #workspaces {
