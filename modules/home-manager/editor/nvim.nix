@@ -10,6 +10,9 @@
       # Add syntax/detection/indentation for langs
       vim-nix
 
+      # To learn vim better
+      hardtime-nvim
+
       # File tree
       # nvim-tree-lua # not sure if i want it yet
       nvim-web-devicons
