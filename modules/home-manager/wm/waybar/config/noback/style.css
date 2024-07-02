@@ -83,7 +83,7 @@ button:hover {
 #cpu,
 #temperature,
 #memory,
-#disk {
+#battery {
   color: @accent2;
   font-weight: 600;
   margin-right: 10px;

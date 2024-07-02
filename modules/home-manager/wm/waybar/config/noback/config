@@ -9,7 +9,7 @@
 
     "modules-left": ["custom/power",  "hyprland/workspaces", "custom/tomato"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "temperature", "memory", "disk", "pulseaudio", "network", "tray"],
+    "modules-right": ["cpu", "temperature", "memory", "battery", "pulseaudio", "network", "tray"],
 
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -38,9 +38,27 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "󰂎",
+            "󰁻",
+            "󰁽",
+            "󰁿",
+            "󰂁",
+            "󰁹"
+        ],
+        "max-length": 25,
+        "tooltip": false,
+    },
    "temperature": {
         "critical-threshold": 70,
         "interval": 2,
+	"hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
         "format": " {temperatureC}°C",
         "format-icons": ["🧊", "", "🔥"]
     },
@@ -49,13 +67,14 @@
         "format": "  {usage}%",
         "tooltip": false
     },
+    "battery": {
+	"interval": 30,
+	"format": "{capacity}%",
+	"tooltip": false
+    },
     "memory": {
         "interval": 2,
         "format": "  {}%"
-    },
-   "disk": {
-        "interval": 45,
-        "format": "󰋊 {percentage_used}%"
     },
     "network": {
         "format-wifi": "  {ipaddr}",
@@ -64,7 +83,6 @@
         "tooltip-format": "still disconnected",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "on-click": "kitty nmtui"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -86,7 +104,7 @@
     },
     "custom/power": {
       "format": "{icon}",
-      "format-icons": "Mmed",
+      "format-icons": "starnick",
       "exec-on-event": "true",
       "on-click": "poweroff"
     },
