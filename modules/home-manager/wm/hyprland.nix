@@ -54,9 +54,9 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ "$XDG_DATA_HOME/wallpaper.jpeg" ];
+      preload = ["$XDG_DATA_HOME/wallpaper.jpeg"];
 
-      wallpaper = [ ",$XDG_DATA_HOME/wallpaper.jpeg" ];
+      wallpaper = [",$XDG_DATA_HOME/wallpaper.jpeg"];
     };
   };
   xdg.dataFile."wallpaper.jpeg" = {
