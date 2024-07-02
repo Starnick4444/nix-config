@@ -10,6 +10,7 @@
     ./wm/hyprland.nix
     ./wm/hyprlock.nix
     ./wm/waybar/waybar.nix
+    ./wm/rofi/rofi.nix
     ./gtk/gtk.nix
     ./editor/nvim.nix
   ];
