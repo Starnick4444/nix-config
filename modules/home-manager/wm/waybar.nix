@@ -136,22 +136,22 @@
                    *
                    */
 
-      	     @define-color base00 #3d1c2f;
-      @define-color base01 #674d5c;
-             @define-color base02 #907f8a;
-             @define-color base03 #bab0b7;
-             @define-color base04 #e4e2e4;
-             @define-color base05 #ffffff;
-             @define-color base06 #ffffff;
-             @define-color base07 #ffffff;
-             @define-color base08 #887468;
-             @define-color base09 #767976;
-             @define-color base0A #847380;
-             @define-color base0B #cd4e3c;
-             @define-color base0C #806ac5;
-             @define-color base0D #8e53fb;
-             @define-color base0E #6438ff;
-             @define-color base0F #9122ff;
+	     @define-color base00: #131213;
+             @define-color base01: #2f1823;
+             @define-color base02: #472234;
+             @define-color base03: #ffbee3;
+             @define-color base04: #9b2a46;
+             @define-color base05: #f15c99;
+             @define-color base06: #81506a;
+             @define-color base07: #632227;
+             @define-color base08: #b00b69;
+             @define-color base09: #ff9153;
+             @define-color base0A: #ffcc00;
+             @define-color base0B: #9ddf69;
+             @define-color base0C: #714ca6;
+             @define-color base0D: #008080;
+             @define-color base0E: #a24030;
+             @define-color base0F: #a24030;
 
                    * {
                      min-height: 0;
