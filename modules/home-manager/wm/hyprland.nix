@@ -54,11 +54,12 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["$XDG_DATA_HOME/wallpapers/red-katana.jpeg"];
-      wallpapper = ["monitor, $XDG_DATA_HOME/wallpapers/red-katana.jpeg"];
+      preload = [ "$XDG_DATA_HOME/wallpaper.jpeg" ];
+
+      wallpaper = [ ",$XDG_DATA_HOME/wallpaper.jpeg" ];
     };
   };
-  xdg.dataFile.wallpapers = {
+  xdg.dataFile."wallpaper.jpeg" = {
     source = ./red-katana.jpeg;
   };
 
