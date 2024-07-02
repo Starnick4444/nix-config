@@ -9,7 +9,7 @@
     ./lang/rust/rust.nix
     ./wm/hyprland.nix
     ./wm/hyprlock.nix
-    ./wm/waybar.nix
+    ./wm/waybar/waybar.nix
     ./gtk/gtk.nix
     ./editor/nvim.nix
   ];
