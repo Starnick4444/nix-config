@@ -77,8 +77,8 @@
         };
         pulseaudio = {
           format = "{icon} {volume}%";
-          format-bluetooth = "{icon} {volume}% 󰂯";
-          format-bluetooth-muted = "󰖁 {icon} 󰂯";
+          format-base0Dtooth = "{icon} {volume}% 󰂯";
+          format-base0Dtooth-muted = "󰖁 {icon} 󰂯";
           format-muted = "󰖁 {format_source}";
           format-source = "{volume}% ";
           format-source-muted = "";
@@ -129,179 +129,167 @@
       };
     };
     style = ''
-                   /*
-                   *
-                   * Base16 Outrun Dark
-                   * Author: Hugo Delahousse (http://github.com/hugodelahousse/)
-                   *
-                   */
+                         /*
+                         *
+                         * Base16 Outrun Dark
+                         * Author: Hugo Delahousse (http://github.com/hugodelahousse/)
+                         *
+                         */
 
-	     @define-color base00 #131213;
-             @define-color base01 #2f1823;
-             @define-color base02 #472234;
-             @define-color base03 #ffbee3;
-             @define-color base04 #9b2a46;
-             @define-color base05 #f15c99;
-             @define-color base06 #81506a;
-             @define-color base07 #632227;
-             @define-color base08 #b00b69;
-             @define-color base09 #ff9153;
-             @define-color base0A #ffcc00;
-             @define-color base0B #9ddf69;
-             @define-color base0C #714ca6;
-             @define-color base0D #008080;
-             @define-color base0E #a24030;
-             @define-color base0F #a24030;
+      	     @define-color base00 #131213;
+                   @define-color base01 #2f1823;
+                   @define-color base02 #472234;
+                   @define-color base03 #ffbee3;
+                   @define-color base04 #9b2a46;
+                   @define-color base05 #f15c99;
+                   @define-color base06 #81506a;
+                   @define-color base07 #632227;
+                   @define-color base08 #b00b69;
+                   @define-color base09 #ff9153;
+                   @define-color base0A #ffcc00;
+                   @define-color base0B #9ddf69;
+                   @define-color base0C #714ca6;
+                   @define-color base0D #008080;
+                   @define-color base0E #a24030;
+                   @define-color base0F #a24030;
 
-                   * {
-                     min-height: 0;
-                     font-family: FiraCode Nerd Font , "Hack Nerd Font", FontAwesome, Roboto,
-                       Helvetica, Arial, sans-serif;
-                     font-size: 14px;
-                   }
+      	     * {
+        min-height: 0;
+        font-family: FiraCode Nerd Font , "Hack Nerd Font", FontAwesome, Roboto,
+          Helvetica, Arial, sans-serif;
+        font-size: 14px;
+      }
 
-                   window.main#waybar {
-                     color: @base05;
-                     background: @base00;
-                     transition-property: background-color;
-                     transition-duration: 0.5s;
-                   }
+      window#waybar {
+        color: @base05;
+        background: #031A16;
+        transition-property: background-color;
+        transition-duration: 0.5s;
+      }
 
-                   window.main#waybar.empty {
-                     opacity: 0.3;
-                   }
+      window#waybar.empty {
+        opacity: 0.3;
+      }
 
-                   .modules-left {
-                       border: none;
-                   }
+      .modules-left {
+          border: none;
+      }
 
-                   .modules-right {
-                     border: none;
-                   }
+      .modules-right {
+        border: none;
+      }
 
-                   .modules-center {
-                     border: none;
-                   }
+      .modules-center {
+        border: none;
+      }
 
-                   button {
-                     border: none;
-                     border-radius: 0;
-                   }
+      button {
+        border: none;
+        border-radius: 0;
+      }
 
-                   button:hover {
-                     background: @base02;
-                     border-radius: 90px;
-                   }
+      button:hover {
+        background: @base02;
+        border-radius: 90px;
+      }
 
-                   #custom-power {
-                     color: @base00;
-                     font-weight: 600;
-                     margin-right: 10px;
-                     padding-left: 15px;
-                     padding-right: 19px;
-                     border-radius: 90px;
-                     background: @base0E;
-                   }
+      #custom-power {
+        color: @base00;
+        font-weight: 600;
+        margin-right: 10px;
+        padding-left: 15px;
+        padding-right: 19px;
+        border-radius: 90px;
+        background: @base0E;
+      }
 
-                   #workspaces {
-                     font-weight: 600;
-                     margin-right: 10px;
-                     padding: 5px 10px;
-                     border-radius: 90px;
-                     background: @base00;
-                   }
+      #workspaces {
+        font-weight: 600;
+        margin-right: 10px;
+        padding: 5px 10px;
+        border-radius: 90px;
+        background: @base00;
+      }
 
-                   #workspaces button {
-                     color: @base0F;
-                       font-weight: 600;
-                           margin: 0px;
-                           padding: 0px 5px;
-                   }
+      #workspaces button {
+        color: @base0F;
+          font-weight: 600;
+              margin: 0px;
+              padding: 0px 5px;
+      }
 
-                   #workspaces button.urgent {
-                     color: @base08;
-                   }
-                   #workspaces button.empty {
-                     color: @base02;
-                   }
+      #workspaces button.urgent {
+        color: @base08;
+      }
+      #workspaces button.empty {
+        color: @base02;
+      }
 
-                   #workspaces button.active {
-                     color: @base05;
-                   }
+      #workspaces button.active {
+        color: @base05;
+      }
 
-                   #workspaces button.focused {
-                     color: @base0B;
-                   }
-                   #custom-tomato,
-                   #cpu,
-            #battery,
-                   #temperature,
-                   #memory,
-                   #disk {
-                     color: @base0F;
-                     font-weight: 600;
-                     margin-right: 10px;
-                     padding: 6px 15px;
-                     border-radius: 90px;
-                     background: @base00;
-                   }
+      #workspaces button.focused {
+        color: @base0B;
+      }
+      #custom-tomato,
+      #cpu,
+      #temperature,
+      #memory,
+      #disk {
+        color: @base0F;
+        font-weight: 600;
+        margin-right: 10px;
+        padding: 6px 15px;
+        border-radius: 90px;
+        background: @base00;
+      }
 
-                   #pulseaudio {
-                     color: @base00;
-                     font-weight: 600;
-                     margin-right: 10px;
-                     padding: 6px 15px;
-                     border-radius: 90px;
-                     background: @base09;
-                   }
+      #pulseaudio {
+        color: @base00;
+        font-weight: 600;
+        margin-right: 10px;
+        padding: 6px 15px;
+        border-radius: 90px;
+        background: @base09;
+      }
 
-                   #network {
-                     color: @base00;
-                     font-weight: 600;
-                     margin-right: 10px;
-                     padding: 6px 15px;
-                     border-radius: 90px;
-                     background: @base0D;
-                   }
+      #network {
+        color: @base00;
+        font-weight: 600;
+        margin-right: 10px;
+        padding: 6px 15px;
+        border-radius: 90px;
+        background: @base0D;
+      }
 
-                   #tray {
-                     color: @base05;
-                     font-weight: 600;
-                     padding: 6px 15px;
-                     border-radius: 90px;
-                     background: @base00;
-                   }
+      #tray {
+        color: @base05;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 90px;
+        background: @base00;
+      }
 
-                   #clock {
-                     color: @base0F;
-                     font-weight: 600;
-                     margin-right: 10px;
-                     padding: 6px 15px;
-                     border-radius: 90px;
-                     background: @base00;
-                   }
+      #clock {
+        color: @base0F;
+        font-weight: 600;
+        margin-right: 10px;
+        padding: 6px 15px;
+        border-radius: 90px;
+        background: @base00;
+      }
 
-                   #custom-sepp {
-                     color: @base02;
-                     font-size: 20px;
-                     padding-left: 4px;
-                     padding-right: 10px;
-                   }
+      #custom-sepp {
+        color: @base02;
+        font-size: 20px;
+        padding-left: 4px;
+        padding-right: 10px;
+      }
 
-                   #network.disconnected {
-                     background-color: @base08;
-                   }
-
-            window.timer#waybar {
-              background: 00;
-            }
-
-             #timer {
-                 margin-left: 100px;
-                 font-weight: 300;
-                 font-size: 48pt;
-                 color: @base05;
-             }
+      #network.disconnected {
+        background-color: @base08;
+      }
     '';
   };
   home.packages = with pkgs; [
