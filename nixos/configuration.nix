@@ -86,11 +86,17 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  time.timeZone = "Europe/Budapest";
 
-  # use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+
+    # use latest kernel
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   users.users = {
     starnick = {

@@ -59,6 +59,10 @@
     pavucontrol # sound control
     waybar # status bar
     # TODO screenshot tool
+    swappy
+    hyprshade
+    grimblast
+    wl-clipboard
     # Screenshot script
     (pkgs.writeShellScriptBin "screenshot" ''
       # Restores the shader after screenhot has been taken
@@ -81,7 +85,7 @@
       	XDG_PICTURES_DIR="$HOME/Pictures"
       fi
 
-      swpy_dir="${UserSettings.configDir}/swappy"
+      swpy_dir="~/.config/swappy"
       save_dir="$XDG_PICTURES_DIR/screenshots"
       save_file=$(date +'%y%m%d_%Hh%Mm%Ss_screenshot.png')
       temp_screenshot="/tmp/screenshot.png"

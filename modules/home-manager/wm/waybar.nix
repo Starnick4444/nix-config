@@ -74,7 +74,6 @@
           tooltip-format = "still disconnected";
           format-linked = "{ifname} (No IP) ";
           format-disconnected = "Disconnected ⚠";
-          on-click = "kitty nmtui";
         };
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -137,22 +136,22 @@
                    *
                    */
 
-      	     @define-color base00: 381f21;
-      @define-color base01: 594244;
-             @define-color base02: 7a6566;
-             @define-color base03: 9b8889;
-             @define-color base04: bbabac;
-             @define-color base05: dccece;
-             @define-color base06: e1d5d5;
-             @define-color base07: e6dddd;
-             @define-color base08: 447cb0;
-             @define-color base09: 46a2d0;
-             @define-color base0A: e13447;
-             @define-color base0B: d4464f;
-             @define-color base0C: c35467;
-             @define-color base0D: ef1518;
-             @define-color base0E: 9c818d;
-             @define-color base0F: ee1616;
+      	     @define-color base00 #381f21;
+      @define-color base01 #594244;
+             @define-color base02 #7a6566;
+             @define-color base03 #9b8889;
+             @define-color base04 #bbabac;
+             @define-color base05 #dccece;
+             @define-color base06 #e1d5d5;
+             @define-color base07 #e6dddd;
+             @define-color base08 #447cb0;
+             @define-color base09 #46a2d0;
+             @define-color base0A #e13447;
+             @define-color base0B #d4464f;
+             @define-color base0C #c35467;
+             @define-color base0D #ef1518;
+             @define-color base0E #9c818d;
+             @define-color base0F #ee1616;
 
                    * {
                      min-height: 0;
@@ -308,6 +307,7 @@
   home.packages = with pkgs; [
     inotify-tools
     tomato-c
+    networkmanagerapplet
   ];
   # home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./waybar;
 }
