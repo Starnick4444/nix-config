@@ -161,7 +161,7 @@
                    }
 
                    window.main#waybar {
-                     color: @base06;
+                     color: @base05;
                      background: @base00;
                      transition-property: background-color;
                      transition-duration: 0.5s;
@@ -189,12 +189,12 @@
                    }
 
                    button:hover {
-                     background: @base03;
+                     background: @base02;
                      border-radius: 90px;
                    }
 
                    #custom-power {
-                     color: @base01;
+                     color: @base00;
                      font-weight: 600;
                      margin-right: 10px;
                      padding-left: 15px;
@@ -208,7 +208,7 @@
                      margin-right: 10px;
                      padding: 5px 10px;
                      border-radius: 90px;
-                     background: @base01;
+                     background: @base00;
                    }
 
                    #workspaces button {
@@ -219,18 +219,18 @@
                    }
 
                    #workspaces button.urgent {
-                     color: @base09;
+                     color: @base08;
                    }
                    #workspaces button.empty {
-                     color: @base03;
+                     color: @base02;
                    }
 
                    #workspaces button.active {
-                     color: @base06;
+                     color: @base05;
                    }
 
                    #workspaces button.focused {
-                     color: @base0C;
+                     color: @base0B;
                    }
                    #custom-tomato,
                    #cpu,
@@ -243,20 +243,20 @@
                      margin-right: 10px;
                      padding: 6px 15px;
                      border-radius: 90px;
-                     background: @base01;
+                     background: @base00;
                    }
 
                    #pulseaudio {
-                     color: @base01;
+                     color: @base00;
                      font-weight: 600;
                      margin-right: 10px;
                      padding: 6px 15px;
                      border-radius: 90px;
-                     background: @base0A;
+                     background: @base09;
                    }
 
                    #network {
-                     color: @base01;
+                     color: @base00;
                      font-weight: 600;
                      margin-right: 10px;
                      padding: 6px 15px;
@@ -265,11 +265,11 @@
                    }
 
                    #tray {
-                     color: @base06;
+                     color: @base05;
                      font-weight: 600;
                      padding: 6px 15px;
                      border-radius: 90px;
-                     background: @base01;
+                     background: @base00;
                    }
 
                    #clock {
@@ -278,18 +278,18 @@
                      margin-right: 10px;
                      padding: 6px 15px;
                      border-radius: 90px;
-                     background: @base01;
+                     background: @base00;
                    }
 
                    #custom-sepp {
-                     color: @base03;
+                     color: @base02;
                      font-size: 20px;
                      padding-left: 4px;
                      padding-right: 10px;
                    }
 
                    #network.disconnected {
-                     background-color: @base09;
+                     background-color: @base08;
                    }
 
             window.timer#waybar {
