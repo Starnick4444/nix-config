@@ -51,6 +51,16 @@
       ];
     };
   };
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = ["$XDG_DATA_HOME/wallpapers/red-katana.jpeg"];
+      wallpapper = ["monitor, $XDG_DATA_HOME/wallpapers/red-katana.jpeg"];
+    };
+  };
+  xdg.dataFile.wallpapers = {
+    source = ./red-katana.jpeg;
+  };
 
   home.packages = with pkgs; [
     kitty
