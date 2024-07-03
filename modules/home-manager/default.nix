@@ -3,6 +3,7 @@
     ./git/git.nix
     ./shell/sh.nix
     ./shell/cli-collection.nix
+    ./shell/btop.nix
     ./browser/firefox.nix
     ./virtualization/virtualization.nix
     ./terminal/kitty.nix
