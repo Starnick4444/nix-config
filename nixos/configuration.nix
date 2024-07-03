@@ -1,12 +1,11 @@
 #  This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }: {
   # You can import other NixOS modules here
   imports = [
@@ -29,7 +28,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
     users = {
       # Import your home-manager configuration
       starnick = import ../home-manager/home.nix;
@@ -67,7 +66,7 @@
 
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = ["nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos"];
+  nix.nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos" ];
   # environment.etc =
   #   lib.mapAttrs'
   #   (name: value: {
@@ -105,7 +104,7 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      extraGroups = ["wheel" "networkmanager" "audio"];
+      extraGroups = [ "wheel" "networkmanager" "audio" ];
     };
   };
 
@@ -123,6 +122,7 @@
     neovim
     gh
     unzip
+    nixpkgs-fmt
 
     # sound and video
     pamixer
@@ -142,7 +142,7 @@
   # Gtk config
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   fonts.packages = with pkgs; [
@@ -151,7 +151,7 @@
     noto-fonts-emoji
   ];
 
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 

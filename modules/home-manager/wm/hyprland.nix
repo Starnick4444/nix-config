@@ -1,8 +1,7 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  ...
+{ inputs
+, pkgs
+, lib
+, ...
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -10,7 +9,7 @@
     # systemd.enable = true;
     # xwayland.enable = true;
 
-    settings = {};
+    settings = { };
     extraConfig = (builtins.readFile ./hyprland.conf) + (builtins.readFile ./keybindings.conf) + (builtins.readFile ./windowrules.conf) + (builtins.readFile ./animations.conf);
   };
 
@@ -54,9 +53,9 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["$XDG_DATA_HOME/wallpaper.jpeg"];
+      preload = [ "$XDG_DATA_HOME/wallpaper.jpeg" ];
 
-      wallpaper = [",$XDG_DATA_HOME/wallpaper.jpeg"];
+      wallpaper = [ ",$XDG_DATA_HOME/wallpaper.jpeg" ];
     };
   };
   xdg.dataFile."wallpaper.jpeg" = {

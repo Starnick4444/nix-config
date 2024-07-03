@@ -1,7 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   home.pointerCursor = {
     name = "Catppuccin-Mocha-Dark-Cursors";
@@ -18,9 +17,9 @@
     theme = {
       name = "Catppuccin-Macchiato-Compact-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
+        accents = [ "pink" ];
         size = "compact";
-        tweaks = ["rimless" "black"];
+        tweaks = [ "rimless" "black" ];
         variant = "macchiato";
       };
     };

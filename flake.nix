@@ -15,23 +15,23 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    hyprland,
-    rust-overlay,
-    ...
-  } @ inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./nixos/configuration.nix
-        inputs.home-manager.nixosModules.default
-        ({pkgs, ...}: {
-	    nixpkgs.overlays = [ rust-overlay.overlays.default ];
-        environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
-        })
-      ];
+  outputs =
+    { self
+    , nixpkgs
+    , hyprland
+    , rust-overlay
+    , ...
+    } @ inputs: {
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos/configuration.nix
+          inputs.home-manager.nixosModules.default
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+          })
+        ];
+      };
     };
-  };
 }

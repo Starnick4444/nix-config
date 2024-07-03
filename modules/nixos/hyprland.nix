@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # Security
   security = {
     pam.services.swaylock = {
@@ -43,7 +43,7 @@
 
   services.dbus = {
     enable = true;
-    packages = [pkgs.dconf];
+    packages = [ pkgs.dconf ];
   };
 
   programs.dconf = {
