@@ -7,6 +7,7 @@
     eza
     fd
     btop
+    tldr
     ripgrep
     rsync
     unzip
