@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    rustup
-    gcc
+    # cargo
+    # llvmPackages_18.libllvm
+    # glibc
+    # gcc
   ];
 }

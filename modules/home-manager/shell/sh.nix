@@ -7,6 +7,7 @@
     # show me files matching "ls grep"
     lsg = "ll | rg";
 
+    nixos-rebuild = "noglob nixos-rebuild";
     # Git Aliases
     # Don't try to glob with zsh so you can do
     # stuff like ga *foo* and correctly have
@@ -70,8 +71,6 @@
     ls = "eza -l";
     cat = "bat";
     fd = "fd -Lu";
-    # Unclear if this works
-    nixos-rebuild = "systemd-run --no-ask-password --uid=0 --system --scope -p MemoryLimit=16000M -p CPUQuota=80% nixos-rebuild";
   };
 in {
   programs.zsh = {
@@ -102,6 +101,9 @@ in {
       # Defaults.
       zstyle ':completion:*:default' list-colors ''${(s.:.)LS_COLORS}
       zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+
+      autoload -U select-word-style
+      select-word-style bash
 
       # Use caching to make completion for commands such as dpkg and apt usable.
       zstyle ':completion::complete:*' use-cache on
