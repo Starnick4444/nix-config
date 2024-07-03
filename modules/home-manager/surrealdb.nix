@@ -1,0 +1,4 @@
+{ pkgs }: 
+  pkgs.buildRustPackage rec {
+
+  }

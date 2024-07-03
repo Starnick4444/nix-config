@@ -88,7 +88,7 @@
   time.timeZone = "Europe/Budapest";
 
   boot = {
-    extraModulePackages = [ config.boot.kernelPackages.rtl88x2bu ];
+    extraModulePackages = with config.boot.kernelPackages; [ rtl88x2bu ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -118,12 +118,17 @@
     wpa_supplicant
     kitty
 
+    nix-init
+
     # dev
     git
     neovim
     gh
     unzip
     nixpkgs-fmt
+    postman
+    # surrealdb
+    # surrealist
 
     # sound and video
     pamixer
