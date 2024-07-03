@@ -88,6 +88,7 @@
   time.timeZone = "Europe/Budapest";
 
   boot = {
+    extraModulePackages = [ config.boot.kernelPackages.rtl88x2bu ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
