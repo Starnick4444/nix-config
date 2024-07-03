@@ -8,6 +8,7 @@
     ./terminal/kitty.nix
     # ./terminal/alacritty.nix
     ./lang/rust/rust.nix
+    ./direnv/direnv.nix
     ./wm/hyprland.nix
     ./wm/hyprlock.nix
     ./wm/waybar/waybar.nix
