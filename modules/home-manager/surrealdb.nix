@@ -1,4 +1,2 @@
-{ pkgs }: 
-  pkgs.buildRustPackage rec {
-
-  }
+{ pkgs }:
+pkgs.buildRustPackage rec { }

@@ -1,19 +1,20 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cargo
-, pkg-config
-, protobuf
+{ stdenv
 , rustPlatform
-, rustc
-, bzip2
+, fetchFromGitHub
+, pkg-config
 , openssl
-, zstd
+, rocksdb_8_3
+, testers
+, surrealdb
 , darwin
-, rocksdb
+, protobuf
+, ...
 }:
 
-stdenv.mkDerivation rec {
+let
+  rocksdb = rocksdb_8_3;
+in
+rustPlatform.buildRustPackage rec {
   pname = "surrealdb";
   version = "2.0.0-alpha.4";
 
@@ -24,41 +25,48 @@ stdenv.mkDerivation rec {
     hash = "sha256-iAsKIXJk52Lbbx5nK01gnN51afZ5XfNV0p+KgL54e6A=";
   };
 
-  cargoDeps = rustPlatform.fetchCargoTarball {
-    inherit src;
-    name = "${pname}-${version}";
-    hash = "sha256-LHBvpWFt1GpHKAqWyvPv8uQvdNBMLTwfXEz26sdUiuU=";
-  };
+  cargoHash = "sha256-LHBvpWFt1GpHKAqWyvPv8uQvdNBMLTwfXEz26sdUiuU=";
+
+  # error: linker `aarch64-linux-gnu-gcc` not found
+  postPatch = ''
+    rm .cargo/config.toml
+  '';
+
+  PROTOC = "${protobuf}/bin/protoc";
+  PROTOC_INCLUDE = "${protobuf}/include";
+
+  ROCKSDB_INCLUDE_DIR = "${rocksdb}/include";
+  ROCKSDB_LIB_DIR = "${rocksdb}/lib";
+
+  RUSTFLAGS = "--cfg surrealdb_unstable";
 
   nativeBuildInputs = [
-    cargo
     pkg-config
-    protobuf
     rustPlatform.bindgenHook
-    rustPlatform.cargoSetupHook
-    rustc
   ];
 
-  buildInputs = [
-    bzip2
-    openssl
-    zstd
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.Security
+  buildInputs = [ openssl ];
+
+  doCheck = false;
+
+  checkFlags = [
+    # flaky
+    "--skip=ws_integration::none::merge"
+    # requires docker
+    "--skip=database_upgrade"
   ];
 
-  env = {
-    ROCKSDB_INCLUDE_DIR = "${rocksdb}/include";
-    ROCKSDB_LIB_DIR = "${rocksdb}/lib";
-    ZSTD_SYS_USE_PKG_CONFIG = true;
+  __darwinAllowLocalNetworking = true;
+
+  passthru.tests.version = testers.testVersion {
+    package = surrealdb;
+    command = "surreal version";
   };
 
-  meta = with lib; {
-    description = "A scalable, distributed, collaborative, document-graph database, for the realtime web";
-    homepage = "https://github.com/surrealdb/surrealdb";
-    license = licenses.unfree; # FIXME: nix-init did not found a license
-    maintainers = with maintainers; [ ];
-    mainProgram = "surrealdb";
-    platforms = platforms.all;
+  meta = {
+    description = "Scalable, distributed, collaborative, document-graph database, for the realtime web";
+    homepage = "https://surrealdb.com/";
+    mainProgram = "surreal";
+    maintainers = [ ];
   };
 }

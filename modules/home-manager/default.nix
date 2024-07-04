@@ -16,6 +16,6 @@
     ./wm/rofi/rofi.nix
     ./gtk/gtk.nix
     ./editor/nvim.nix
-    ./surrealdb/default.nix
+    # ./surrealdb/default.nix
   ];
 }

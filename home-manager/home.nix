@@ -73,12 +73,14 @@
 
       ags
 
+      (pkgs.callPackage ../modules/home-manager/surrealdb/default.nix { })
       spotify
       vlc
       obs-studio
       ffmpeg
       mediainfo
       libmediainfo
+      qbittorrent
     ];
   };
 
