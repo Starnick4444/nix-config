@@ -63,6 +63,8 @@
       firefox # consider librewolf
       git
 
+      obsidian
+
       # Office
       libreoffice-fresh
 

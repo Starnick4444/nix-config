@@ -1,59 +1,35 @@
 { pkgs
-, config
 , ...
 }: {
+  home.packages = with pkgs; [
+    catppuccin-cursors
+    catppuccin-gtk
+  ];
   home.pointerCursor = {
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    package = pkgs.catppuccin-cursors.mochaDark;
-    size = 16;
-  };
-  xdg.configFile = {
-    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+    name = "catppuccin-mocha-blue-cursors";
+    package = pkgs.catppuccin-cursors.mochaBlue;
+    size = 24;
   };
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
-        tweaks = [ "rimless" "black" ];
-        variant = "macchiato";
-      };
+      name = "Catppuccin";
+      package = pkgs.catppuccin-gtk;
     };
     cursorTheme = {
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
+      name = "catppuccin-mocha-blue-cursors";
+      package = pkgs.catppuccin-cursors.mochaBlue;
     };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
+    gtk3 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+    };
     font = {
       name = "FiraCode Nerd Font";
       size = 10;
-    };
-    gtk3.extraConfig = {
-      gtk-xft-antialias = 1;
-      gtk-xft-hinting = 1;
-      gtk-xft-hintstyle = "hintslight";
-      gtk-xft-rgba = "rgb";
-      gtk-cursor-theme-name = "Catppuccin-Mocha-Green-Cursors";
-    };
-    gtk2.extraConfig = ''
-      gtk-xft-antialias=1
-      gtk-xft-hinting=1
-      gtk-xft-hintstyle="hintslight"
-      gtk-xft-rgba="rgb"
-    '';
-    gtk4.extraConfig = {
-      gtk-xft-antialias = 1;
-      gtk-xft-hinting = 1;
-      gtk-xft-hintstyle = "hintslight";
-      gtk-xft-rgba = "rgb";
-      gtk-cursor-theme-name = "Catppuccin-Mocha-Green-Cursors";
     };
   };
   qt = {

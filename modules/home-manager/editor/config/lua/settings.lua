@@ -34,4 +34,6 @@ require("legendary").keymaps({
 	{ "<C-j>", "<C-w>j", description = "Panes: Move down", opts = opts },
 	{ "<C-k>", "<C-w>k", description = "Panes: Move up", opts = opts },
 	{ "<C-l>", "<C-w>l", description = "Panes: Move right", opts = opts },
+    { "<leader><leader>", "<c-^>", description = "Toggle between buffers", opts = opts},
+    { "<leader>o", ':e <C-R>=expand("%:p:h") . "/" <cr>', description = "Open new file adjacent to current file", opts = opts}
 })

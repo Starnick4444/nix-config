@@ -6,3 +6,13 @@ require("legendary").keymaps({
 	{ "<Leader>fb", require("telescope.builtin").buffers, description = "Telescope: Buffers", opts = opts },
 	{ "<Leader>fh", require("telescope.builtin").help_tags, description = "Telescope: Help tags", opts = opts },
 })
+local actions = require("telescope.actions")
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close,
+            },
+        },
+    },
+})

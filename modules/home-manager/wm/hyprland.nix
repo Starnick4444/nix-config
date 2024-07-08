@@ -35,11 +35,11 @@
           on-resume = "brightnessctl -rd rgb:kbd_backlight"; # turn on keyboard backlight.
         }
         {
-          timeout = 300; # 5min
+          timeout = 3000; # 5min
           on-timeout = "loginctl lock-session"; # lock screen when timeout has passed
         }
         {
-          timeout = 330; # 5.5min
+          timeout = 3300; # 5.5min
           on-timeout = "hyprctl dispatch dpms off"; # screen off when timeout has passed
           on-resume = "hyprctl dispatch dpms on"; # screen on when activity is detected after timeout has fired.
         }

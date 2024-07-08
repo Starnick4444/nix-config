@@ -65,6 +65,9 @@
       # Theme
       base16-nvim
 
+      # Rust formatting
+      rust-vim
+
       # LSP
       nvim-lspconfig
       # Mostly for linting
