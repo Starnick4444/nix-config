@@ -75,7 +75,9 @@
 
     optimise.automatic = true;
 
-    nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos" ];
+    # nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos" ];
+    generateRegistryFromInputs = true;
+    generateNixPathFromInputs = true;
   };
 
   system.autoUpgrade = {
