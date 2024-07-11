@@ -66,7 +66,24 @@
 
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos" ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    optimise.automatic = true;
+
+    nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root//channels/nixos" ];
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    # allowReboot = true;
+    dates = "03:00";
+    flake = "github:Starnick4444/nixos-config";
+  };
 
   #tmp
   environment.etc."current-system-packages".text =
@@ -143,12 +160,19 @@
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [ rtl88x2bu ];
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 20;
+      };
       efi.canTouchEfiVariables = true;
     };
 
+    supportedFilesystems = [ "ntfs" ];
+
     # use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
+
+    tmp.useTmpfs = true;
   };
 
   users.users = {

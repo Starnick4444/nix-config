@@ -19,6 +19,7 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
+    inputs.nyaa.homeManagerModule
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -108,6 +109,17 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+
+  programs.nyaa = {
+    enable = true;
+    client.qBittorrent = {
+      base_url = "http://localhost:8080";
+      username = "admin";
+      password = "adminadmin";
+      savepath = "/mnt/bhdd/Torrents/";
+      sequential_download = true;
+    };
+  };
 
   # fonts
   fonts.fontconfig.enable = true;
