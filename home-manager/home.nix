@@ -70,6 +70,7 @@
       libreoffice-fresh
 
       wine
+      heroic
 
       # social
       discord

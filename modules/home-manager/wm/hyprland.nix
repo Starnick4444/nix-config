@@ -58,6 +58,9 @@
       wallpaper = [ ",$XDG_DATA_HOME/wallpaper.jpeg" ];
     };
   };
+  services.dunst = {
+    enable = true;
+  };
   xdg.dataFile."wallpaper.jpeg" = {
     source = ./red-katana.jpeg;
   };

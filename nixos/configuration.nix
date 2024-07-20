@@ -87,6 +87,9 @@
     flake = "github:Starnick4444/nixos-config";
   };
 
+  # virtualization temp
+  virtualisation.docker.enable = true;
+
   #tmp
   environment.etc."current-system-packages".text =
 
@@ -121,25 +124,33 @@
 
   time.timeZone = "Europe/Budapest";
 
-  hardware.graphics.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport32Bit = true;
+  };
 
+  # it will get renamed to this in the future
+  # hardware.graphics = {
+  #   enable = true;
+  #   enable32Bit = true;
+  # };
   # Load nvidia driver for Xorg and Wayland
-  # services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-  # hardware.nvidia = {
+  hardware.nvidia = {
 
   # Modesetting is required.
-  # modesetting.enable = true;
+  modesetting.enable = true;
 
   # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
   # Enable this if you have graphical corruption issues or application crashes after waking
   # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
   # of just the bare essentials.
-  # powerManagement.enable = false;
+  powerManagement.enable = true;
 
   # Fine-grained power management. Turns off GPU when not in use.
   # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-  # powerManagement.finegrained = false;
+  powerManagement.finegrained = false;
 
   # Use the NVidia open source kernel module (not to be confused with the
   # independent third-party "nouveau" open source driver).
@@ -148,18 +159,19 @@
   # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
   # Only available from driver 515.43.04+
   # Currently alpha-quality/buggy, so false is currently the recommended setting.
-  # open = false;
+  open = false;
 
   # Enable the Nvidia settings menu,
   # accessible via `nvidia-settings`.
-  # nvidiaSettings = true;
+  nvidiaSettings = true;
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  # package = config.boot.kernelPackages.nvidiaPackages.production;
+  package = config.boot.kernelPackages.nvidiaPackages.stable;
   # Special config to load the latest (535 or 550) driver for the support of the 4070 SUPER
-  # };
+  };
 
   boot = {
+    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
     extraModulePackages = with config.boot.kernelPackages; [ rtl88x2bu ];
     loader = {
       systemd-boot = {
@@ -171,6 +183,7 @@
 
     supportedFilesystems = [ "ntfs" ];
 
+    kernel.sysctl."vm.max_heap_count" = 1048576;
     # use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
 
@@ -184,11 +197,13 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      extraGroups = [ "wheel" "networkmanager" "audio" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "docker" ];
     };
   };
 
   environment.systemPackages = with pkgs; [
+    egl-wayland
+
     vim
     wget
     zsh
@@ -207,6 +222,9 @@
     nixpkgs-fmt
     postman
     jetbrains.datagrip
+
+    # reverse engineering
+    godot_4
 
     openssl
     pkg-config

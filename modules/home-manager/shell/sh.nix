@@ -13,7 +13,7 @@ let
     # Don't try to glob with zsh so you can do
     # stuff like ga *foo* and correctly have
     # git add the right stuff
-    git = "noglob git";
+    # git = "noglob git";
     gs = "git status";
     gst = "git stash";
     gsp = "git stash pop";
