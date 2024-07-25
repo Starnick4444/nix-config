@@ -3,6 +3,7 @@
     # cargo
     # llvmPackages_18.libllvm
     # glibc
+    rust-bindgen
     gcc
   ];
 }
