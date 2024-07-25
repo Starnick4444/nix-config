@@ -5,7 +5,7 @@
       package = pkgs.nerdfonts;
       name = "SauceCodePro Nerd Font Mono";
     };
-    shellIntegration.enableZshIntegration = true;
+    shellIntegration.enableFishIntegration = true;
     settings = {
       bold_font = "auto";
       italic_font = "auto";

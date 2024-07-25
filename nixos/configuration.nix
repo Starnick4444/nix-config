@@ -211,7 +211,6 @@
 
     vim
     wget
-    zsh
     git
     home-manager
     wpa_supplicant
@@ -263,9 +262,18 @@
     noto-fonts-emoji
   ];
 
-  environment.shells = with pkgs; [ zsh ];
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
+  # environment.shells = with pkgs; [ fish ];
+  # users.defaultUserShell = pkgs.fish;
+  # programs.fish.enable = true;
+  programs.bash = {
+    interactiveShellInit = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
+  };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

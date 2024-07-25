@@ -59,7 +59,6 @@
 
     packages = with pkgs; [
       # Core
-      zsh
       kitty
       firefox # consider librewolf
       git

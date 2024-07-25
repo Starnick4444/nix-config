@@ -6,9 +6,9 @@
     };
     gamemode.enable = true;
   };
-  environment.systemPackages = with pkgs; [ 
-    kdePackages.wayland-protocols 
-    mangohud 
+  environment.systemPackages = with pkgs; [
+    kdePackages.wayland-protocols
+    mangohud
     protonup
   ];
 
