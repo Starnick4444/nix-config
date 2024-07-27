@@ -63,6 +63,8 @@
       firefox # consider librewolf
       git
 
+      heaptrack
+
       obsidian
 
       # Office
@@ -80,6 +82,8 @@
       spotify
       vlc
       obs-studio
+      handbrake
+      wf-recorder
       ffmpeg
       mediainfo
       libmediainfo

@@ -253,7 +253,7 @@
   # Gtk config
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
   };
 
   fonts.packages = with pkgs; [
@@ -263,8 +263,9 @@
   ];
 
   # environment.shells = with pkgs; [ fish ];
-  # users.defaultUserShell = pkgs.fish;
-  # programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
+  /*
   programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -274,6 +275,7 @@
       fi
     '';
   };
+  */
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

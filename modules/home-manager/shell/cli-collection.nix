@@ -14,7 +14,7 @@
     tmux
     vim
     tree
-    dooit
+    # dooit
     stremio
     # neovim
   ];

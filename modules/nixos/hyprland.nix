@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   # Security
   security = {
     pam.services.swaylock = {
@@ -17,6 +17,7 @@
       xwayland = {
         enable = true;
       };
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
   };
