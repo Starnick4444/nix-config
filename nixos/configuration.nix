@@ -240,6 +240,8 @@
     brightnessctl
     playerctl
 
+    small.dooit
+
     # file manager
     yazi
 

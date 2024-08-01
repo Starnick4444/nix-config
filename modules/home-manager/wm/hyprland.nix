@@ -6,8 +6,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # systemd.enable = true;
-    # xwayland.enable = true;
+    systemd.enable = true;
+    xwayland.enable = true;
 
     settings = { };
     extraConfig = (builtins.readFile ./hyprland.conf) + (builtins.readFile ./keybindings.conf) + (builtins.readFile ./windowrules.conf) + (builtins.readFile ./animations.conf);

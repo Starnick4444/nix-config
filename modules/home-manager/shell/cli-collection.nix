@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   # Collection of useful CLI apps
   home.packages = with pkgs; [
     # Command Line
@@ -14,7 +14,10 @@
     tmux
     vim
     tree
-    # dooit
+    dust
+    loc
+    onefetch
+    # small.dooit
     stremio
     # neovim
   ];

@@ -64,6 +64,7 @@
       git
 
       heaptrack
+      samply
 
       obsidian
 
@@ -76,9 +77,9 @@
       # social
       discord
 
-      ags
+      # ags
 
-      # (pkgs.callPackage ../modules/home-manager/surrealdb/default.nix { })
+      (pkgs.callPackage ../modules/home-manager/surrealdb/default.nix { })
       spotify
       vlc
       obs-studio
