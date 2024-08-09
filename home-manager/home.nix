@@ -75,7 +75,7 @@
       heroic
 
       # social
-      discord
+      vesktop
 
       # ags
 

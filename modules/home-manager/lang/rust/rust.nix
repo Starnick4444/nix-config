@@ -4,6 +4,7 @@
     # llvmPackages_18.libllvm
     # glibc
     rust-bindgen
+    rust-analyzer
     gcc
   ];
 }

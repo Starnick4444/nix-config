@@ -82,9 +82,14 @@
 
   system.autoUpgrade = {
     enable = true;
-    # allowReboot = true;
-    dates = "03:00";
-    flake = "github:Starnick4444/nixos-config";
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L" # print build logs
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
   };
 
   # virtualization temp
@@ -193,6 +198,29 @@
   programs.nix-ld = {
     enable = true;
     libraries = pkgs.steam-run.fhsenv.args.multiPkgs pkgs;
+    # libraries = with pkgs; [
+    #  xorg.libXau
+    #  xorg.libXrandr
+    #  xorg.libX11
+    #  libGL
+    #  krb5
+    #  glib
+    #  nss
+    #  nspr
+    #  xorg.libXcomposite
+    #  xorg.libXdamage
+    #  xorg.libXfixes
+    #  xorg.libXtst
+    #  freetype
+    #  expat
+    #  fontconfig.lib
+    #  dbus.lib
+    #  alsa-lib
+    #  xorg.libXrender
+    #  xorg.libXdmcp
+    # 
+    #  libsForQt5.qt5.qtbase
+    #];
   };
 
   users.users = {
@@ -268,7 +296,7 @@
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
   /*
-  programs.bash = {
+    programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then
@@ -276,7 +304,7 @@
         exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
       fi
     '';
-  };
+    };
   */
 
   # This setups a SSH server. Very important if you're setting up a headless system.
