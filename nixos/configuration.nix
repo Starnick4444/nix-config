@@ -244,7 +244,8 @@
     wpa_supplicant
     kitty
 
-    nix-init
+    # build fails on unstable (fix upstream)
+    master.nix-init
 
     # dev
     git
@@ -256,7 +257,7 @@
     jetbrains.datagrip
 
     # reverse engineering
-    godot_4
+    # godot_4
 
     openssl
     pkg-config
@@ -267,8 +268,6 @@
     pamixer
     brightnessctl
     playerctl
-
-    small.dooit
 
     # file manager
     yazi

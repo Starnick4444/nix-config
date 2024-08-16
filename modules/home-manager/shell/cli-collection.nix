@@ -17,7 +17,8 @@
     dust
     loc
     onefetch
-    # small.dooit
+    fastfetch
+    dooit
     stremio
     # neovim
   ];

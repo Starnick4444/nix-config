@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -24,21 +24,22 @@
     , nixpkgs
     , hyprland
     , rust-overlay
-    , nixpkgs-small
+    , nixpkgs-master
     , ...
-  } @ inputs: 
-  let
-    overlay-small = final: prev: {
-        small = nixpkgs-small.legacyPackages.${prev.system};
+    } @ inputs:
+    let
+      overlay-master = final: prev: {
+        master = nixpkgs-master.legacyPackages.${prev.system};
       };
-  in{
+    in
+    {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
           inputs.home-manager.nixosModules.default
           ({ pkgs, ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlays.default overlay-small ];
+            nixpkgs.overlays = [ rust-overlay.overlays.default overlay-master ];
             environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
           })
           ./modules/nixos/nix-path/module.nix
