@@ -21,7 +21,7 @@
       feline-nvim
 
       # Git info
-      # gitsigns-nvim
+      gitsigns-nvim
 
       # Indent lines
       # indent-blankline-nvim
