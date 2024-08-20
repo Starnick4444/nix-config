@@ -129,16 +129,11 @@
 
   time.timeZone = "Europe/Budapest";
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
-  # it will get renamed to this in the future
-  # hardware.graphics = {
-  #   enable = true;
-  #   enable32Bit = true;
-  # };
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
 
