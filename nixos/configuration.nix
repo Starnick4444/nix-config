@@ -239,8 +239,7 @@
     wpa_supplicant
     kitty
 
-    # build fails on unstable (fix upstream)
-    master.nix-init
+    nix-init
 
     # dev
     git
