@@ -4,6 +4,7 @@
     ./shell/sh.nix
     ./shell/cli-collection.nix
     ./shell/btop.nix
+    ./shell/starship.nix
     ./browser/firefox.nix
     ./virtualization/virtualization.nix
     ./terminal/kitty.nix
