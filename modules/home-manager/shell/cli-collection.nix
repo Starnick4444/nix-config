@@ -21,5 +21,7 @@
     dooit
     stremio
     # neovim
+
+    mpv
   ];
 }
