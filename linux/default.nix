@@ -4,11 +4,10 @@ let
   cfg = config.my-linux;
 in
 {
-  # imports = lib.optional cfg.includeGames ./games;
   imports = [
-    ./games
     ./wm
     ./nix-path
+    ./games # TODO make this optional work (maybe always import the module and have the option defined there)
   ];
 
   options.my-linux = {

@@ -128,6 +128,14 @@
             };
             specialArgs = { inherit inputs nixpkgs; windowManager = "hyprland"; };
           };
+          laptop = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = nixosModules {
+              user = "starnick";
+              host = "laptop";
+            };
+            specialArgs = { inherit inputs nixpkgs; windowManager = "hyprland"; };
+          };
         };
       };
       systems = [ "x86_64-linux" ];
