@@ -11,8 +11,11 @@ in
     # ./starship
     ./git
     ./nvim
+    ./btop
+    ./fd
     ./direnv
     ./wm
+    ./nyaa
     ./firefox
     # ./games # moved to nixos modules
   ];
@@ -82,6 +85,7 @@ in
         postman
         jetbrains.datagrip
         nix-init
+        sqlx-cli
 
         # benchmarking
         heaptrack

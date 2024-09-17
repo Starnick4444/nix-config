@@ -86,5 +86,7 @@ in
     includeGames = true;
   };
 
+  virtualisation.docker.enable = true;
+
   zramSwap.enable = true;
 }

@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./hyprlock
     ./rofi
     ./waybar
     ./gtk

@@ -111,12 +111,14 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            backupFileExtension = "backup";
             users.${user} = import (./. + "/hosts/${host}/home.nix");
             # TODO this is not per-system, this is same for every system rn which is not correct
-            extraSpecialArgs = { windowManager = "cosmic"; };
+            extraSpecialArgs = { windowManager = "hyprland"; };
             sharedModules = [
               # sharedOptions
               # nix-index-database.hmModules.nix-index
+              nyaa.homeManagerModule
             ];
           };
         }
@@ -132,7 +134,7 @@
               user = "starnick";
               host = "mainpc";
             };
-            specialArgs = { inherit inputs nixpkgs; windowManager = "cosmic"; };
+            specialArgs = { inherit inputs nixpkgs; windowManager = "hyprland"; };
           };
           laptop = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";

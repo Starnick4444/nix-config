@@ -5,6 +5,7 @@
 
   my-home = {
     includeFonts = true;
+    isWork = true;
     useNeovim = true;
   };
 }
