@@ -15,6 +15,10 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # home-manager-unstable = {
     #   url = "github:nix-community/home-manager";
     #  inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -108,13 +112,15 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${user} = import (./. + "/hosts/${host}/home.nix");
-            extraSpecialArgs = { windowManager = "hyprland"; };
+            # TODO this is not per-system, this is same for every system rn which is not correct
+            extraSpecialArgs = { windowManager = "cosmic"; };
             sharedModules = [
               # sharedOptions
               # nix-index-database.hmModules.nix-index
             ];
           };
         }
+        nixos-cosmic.nixosModules.default
       ];
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -126,7 +132,7 @@
               user = "starnick";
               host = "mainpc";
             };
-            specialArgs = { inherit inputs nixpkgs; windowManager = "hyprland"; };
+            specialArgs = { inherit inputs nixpkgs; windowManager = "cosmic"; };
           };
           laptop = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
