@@ -86,10 +86,22 @@ in
         jetbrains.datagrip
         nix-init
         sqlx-cli
+        (fenix.complete.withComponents [
+          "cargo"
+          "clippy"
+          "rust-src"
+          "rustc"
+          "rustfmt"
+        ])
+        rust-analyzer
+        gcc
 
         # benchmarking
         heaptrack
         samply
+
+        # Network debugging
+        wireshark
 
         # Work packages 2
         # postgresql
