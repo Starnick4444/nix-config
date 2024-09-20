@@ -10,6 +10,7 @@
           silent = true;
           diagnostic = {
             # Navigate in diagnostics
+            "<leader>cd" = "open_float";
             "<leader>k" = "goto_prev";
             "<leader>j" = "goto_next";
           };
@@ -22,6 +23,7 @@
             K = "hover";
             "<leader>rn" = "rename";
             "<leader>fm" = "format";
+            "<leader>ca" = "code_action";
           };
         };
 
