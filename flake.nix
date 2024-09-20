@@ -40,6 +40,11 @@
       url = "github:Beastwick18/nyaa";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+        url = "github:nix-community/nixvim";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -124,6 +129,7 @@
                 # sharedOptions
                 # nix-index-database.hmModules.nix-index
                 nyaa.homeManagerModule
+                nixvim.homeManagerModules.nixvim
               ];
             };
           }
