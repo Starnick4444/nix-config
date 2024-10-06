@@ -30,15 +30,15 @@
       modeline = true; # Tags such as 'vim:ft=sh' NOTE: idk
       modelines = 100; # Sets the type of modelines
       undofile = true; # Automatically save and restore undo history
-      incsearch = true; # Incremental search: show match for partly typed search command NOTE: idk
+      incsearch = true; # Incremental search: show match for partly typed search command
       inccommand = "split"; # Search and replace: preview changes in quickfix list NOTE: idk
       ignorecase = true; # When the search query is lower-case, match both lower and upper-case
 
       #   patterns
       smartcase = true; # Override the 'ignorecase' option if the search pattern contains upper
       #   case characters
-      scrolloff = 8; # Number of screen lines to show around the cursor NOTE: might be too much
-      cursorline = false; # Highlight the screen line of the cursor NOTE: true in initial config, wanna try without
+      scrolloff = 4; # Number of screen lines to show around the cursor
+      cursorline = false; # Highlight the screen line of the cursor
       cursorcolumn = false; # Highlight the screen column of the cursor
       signcolumn = "yes"; # Whether to show the signcolumn
       colorcolumn = "100"; # Columns to highlight NOTE: signcolumn is yes:2, idk whats the diff here
