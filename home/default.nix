@@ -70,6 +70,7 @@ in {
           obs-studio
           handbrake
           qbittorrent
+          krita
 
           # social
           vesktop
