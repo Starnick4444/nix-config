@@ -12,6 +12,7 @@ in {
     ./fish
     # ./starship
     ./git
+    ./ssh
     ./nvim
     ./btop
     ./fd
