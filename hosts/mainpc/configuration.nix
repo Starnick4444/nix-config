@@ -13,8 +13,8 @@ in {
   ];
 
   boot = {
-    # nvidia gpu sleep
-    kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+    # nvidia gpu sleep, nvidia param for wayland
+    kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.fbdev=1"];
 
     # wifi drivers
     extraModulePackages = with config.boot.kernelPackages; [rtl88x2bu];
@@ -50,7 +50,7 @@ in {
     enable32Bit = true;
   };
 
-  services.ratbagd.enable = true;
+  services.ratbagd.enable = false;
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
