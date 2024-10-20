@@ -38,6 +38,8 @@
 
       dressing.enable = true;
 
+      transparent.enable = true;
+
       # TODO: notify?
 
       # NOTE: gonna try it

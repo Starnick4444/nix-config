@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
     font = {
@@ -17,6 +16,9 @@
       # term = "xterm-256color";
       scrollback_lines = 100000;
       window_padding_width = 4;
+
+      background_opacity = "0.7";
+      background_blur = 0;
 
       # foreground = "#D8DEE9";
       # background = "#2E3440";
