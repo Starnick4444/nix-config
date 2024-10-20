@@ -30,7 +30,7 @@
         servers = {
           clangd.enable = true;
           texlab.enable = true;
-          nil-ls = {
+          nil_ls = {
             enable = true;
             settings.formatting.command = [{__raw = "get_nix_formatter()";}];
           };

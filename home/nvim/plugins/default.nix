@@ -40,6 +40,8 @@
 
       transparent.enable = true;
 
+      web-devicons.enable = true;
+
       # TODO: notify?
 
       # NOTE: gonna try it
