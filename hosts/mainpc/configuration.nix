@@ -14,7 +14,7 @@ in {
 
   boot = {
     # nvidia gpu sleep, nvidia param for wayland
-    kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.fbdev=1"];
+    kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.fbdev=1" "nvidia-drm.modeset=1"];
 
     # wifi drivers
     extraModulePackages = with config.boot.kernelPackages; [rtl88x2bu];
@@ -48,16 +48,17 @@ in {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [nvidia-vaapi-driver];
   };
 
-  services.ratbagd.enable = false;
+  services.ratbagd.enable = true;
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     # Modesetting is required.
-    modesetting.enable = true;
+    # modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Enable this if you have graphical corruption issues or application crashes after waking
