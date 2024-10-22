@@ -45,6 +45,21 @@ in
     enable32Bit = true;
   };
 
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
+  };
+  powerManagement.powertop.enable = true;
+
   my-linux = {
     enableNixOptimise = true;
     includeGames = false;
