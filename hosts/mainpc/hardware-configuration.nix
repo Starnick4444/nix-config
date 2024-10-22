@@ -5,8 +5,7 @@
 
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -15,26 +14,22 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/ca960f76-76da-44dd-abff-b34fb2c0d718";
+    { device = "/dev/disk/by-uuid/f7641db9-c3bf-4b4b-9eec-2042ad9e882f";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/E288-863A";
+    { device = "/dev/disk/by-uuid/08F1-39C1";
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/bhdd" =
-    {
-      device = "/dev/disk/by-uuid/5d88b439-e533-45d0-bc4c-0aece1f41fa0";
+  fileSystems."/home/bhdd" =
+    { device = "/dev/disk/by-uuid/5d88b439-e533-45d0-bc4c-0aece1f41fa0";
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/shdd" =
-    {
-      device = "/dev/disk/by-uuid/23bf8a68-ff82-4a42-9248-cd26a4e97040";
+  fileSystems."/home/shdd" =
+    { device = "/dev/disk/by-uuid/23bf8a68-ff82-4a42-9248-cd26a4e97040";
       fsType = "ext4";
     };
 
@@ -45,7 +40,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s20f0u2u1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp0s20f0u2u2.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

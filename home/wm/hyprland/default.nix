@@ -1,6 +1,6 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
+    ./hyprlock
     ./rofi
     ./waybar
     ./gtk
@@ -12,7 +12,7 @@
     systemd.enable = true;
     xwayland.enable = true;
 
-    settings = { };
+    settings = {};
     extraConfig = (builtins.readFile ./hyprland.conf) + (builtins.readFile ./keybindings.conf) + (builtins.readFile ./windowrules.conf) + (builtins.readFile ./animations.conf);
   };
 
@@ -20,8 +20,8 @@
     enable = true;
     # Portal config
     portal = {
-      enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+      # enable = true;
+      # extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr];
     };
 
     userDirs = {
@@ -46,6 +46,9 @@
     # wallpapper
     dataFile."wallpaper.jpeg" = {
       source = ./red-katana.jpeg;
+    };
+    dataFile."wallpaper_11.jpg" = {
+      source = ./wallpaper_11.jpg;
     };
   };
 
@@ -90,9 +93,9 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = [ "$XDG_DATA_HOME/wallpaper.jpeg" ];
+        preload = ["$XDG_DATA_HOME/wallpaper_11.jpg"];
 
-        wallpaper = [ ",$XDG_DATA_HOME/wallpaper.jpeg" ];
+        wallpaper = [",$XDG_DATA_HOME/wallpaper_11.jpg"];
       };
     };
     dunst = {

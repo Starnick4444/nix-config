@@ -1,18 +1,24 @@
-{ config, pkgs, lib, ... }:
-with lib;
-let
-  cfg = config.my-home;
-in
 {
-
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.my-home;
+in {
   imports = [
     ./kitty
     ./fish
     # ./starship
     ./git
+    ./ssh
     ./nvim
+    ./btop
+    ./fd
     ./direnv
     ./wm
+    ./nyaa
     ./firefox
     # ./games # moved to nixos modules
   ];
@@ -33,74 +39,94 @@ in
         PAGER = "less";
       };
 
-      packages = with pkgs; [
-        # command line utilities
-        timer
-        bat
-        eza
-        fd
-        btop
-        tldr
-        ripgrep
-        rsync
-        unzip
-        tree
-        dust
-        fastfetch
-        dooit
-        git
-        kitty
-        yazi
-        comma
-        obsidian
+      packages = with pkgs;
+        [
+          # command line utilities
+          timer
+          bat
+          eza
+          fd
+          btop
+          tldr
+          ripgrep
+          rsync
+          unzip
+          tree
+          dust
+          fastfetch
+          dooit
+          git
+          kitty
+          yazi
+          comma
+          obsidian
 
-        # Office
-        libreoffice-fresh
+          # Office
+          libreoffice-fresh
 
-        # Media
-        stremio
-        mpv
-        spotify
-        obs-studio
-        handbrake
-        qbittorrent
+          # Media
+          stremio
+          mpv
+          spotify
+          obs-studio
+          handbrake
+          qbittorrent
+          krita
 
-        # social
-        vesktop
+          # social
+          vesktop
 
-        # probs nice to have's
-        # nix-cleanup
-        # ack
-      ] ++ optionals cfg.includeFonts [
-        # Fonts
-        nerdfonts
-        fira-code
-        noto-fonts-emoji
-      ] ++ optionals cfg.isWork [
-        # dev
-        nixpkgs-fmt
-        postman
-        jetbrains.datagrip
-        nix-init
+          # probs nice to have's
+          # nix-cleanup
+          # ack
+          # hardware-config
+          piper
+        ]
+        ++ optionals cfg.includeFonts [
+          # Fonts
+          nerdfonts
+          fira-code
+          noto-fonts-emoji
+        ]
+        ++ optionals cfg.isWork [
+          # dev
+          nixpkgs-fmt
+          postman
+          jetbrains.datagrip
+          nix-init
+          sqlx-cli
+          (fenix.complete.withComponents [
+            "cargo"
+            "clippy"
+            "rust-src"
+            "rustc"
+            "rustfmt"
+          ])
+          rust-analyzer
+          gcc
+          loc
 
-        # benchmarking
-        heaptrack
-        samply
+          # benchmarking
+          heaptrack
+          samply
 
-        # Work packages 2
-        # postgresql
-        # awscli2
-        # oktoast
-        # toast-services
-        # pizzabox
-        # heroku
-        # colima
-        # docker
-        # docker-compose
-        # docker-credential-helpers
-        # android-tools
-        # autossh
-      ];
+          # Network debugging
+          wireshark
+
+          # Work packages 2
+          # postgresql
+          # awscli2
+          # oktoast
+          # toast-services
+          # pizzabox
+          # heroku
+          # colima
+          # docker
+          # docker-compose
+          # docker-credential-helpers
+          # android-tools
+          # autossh
+        ];
     };
 
     fonts.fontconfig.enable = cfg.includeFonts;
@@ -120,5 +146,4 @@ in
     # changes in each release.
     home.stateVersion = "24.05";
   };
-
 }

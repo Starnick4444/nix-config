@@ -1,5 +1,4 @@
-_: 
-{
+_: {
   programs.nyaa = {
     enable = true;
     client.qBittorrent = {
@@ -7,7 +6,7 @@ _:
       username = "admin";
       password = "adminadmin";
       # TODO change this to a xdg/env var path
-      savepath = "/mnt/bhdd/Torrents/";
+      savepath = "/home/bhdd/Torrents/";
       sequential_download = true;
     };
   };
