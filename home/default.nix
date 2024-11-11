@@ -105,6 +105,13 @@ in {
           rust-analyzer
           gcc
           loc
+          android-studio
+          # android-studio-tools
+          android-tools
+          scrcpy
+          jadx
+          frida-tools
+          (pkgs.callPackage ./objection/default.nix {})
 
           # benchmarking
           heaptrack
@@ -112,6 +119,7 @@ in {
 
           # Network debugging
           wireshark
+          burpsuite
 
           # Work packages 2
           # postgresql
@@ -124,7 +132,6 @@ in {
           # docker
           # docker-compose
           # docker-credential-helpers
-          # android-tools
           # autossh
         ];
     };

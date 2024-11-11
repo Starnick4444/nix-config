@@ -42,64 +42,76 @@
     };
 
     nixvim = {
-        url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs =
-    inputs@{ self
-    , nixpkgs
-    , nixpkgs-master
-    , home-manager
-    , nixos-stable
-    , flake-parts
-    , ...
-    }:
-      with nixpkgs.lib;
-      let
-        # overlay-master = final: prev: {
-        #   master = nixpkgs-master.legacyPackages.${prev.system};
-        # };
-        # todo remove above
-        nixpkgsConfig = with inputs; {
-          config = {
-            allowUnfree = true;
-          };
-          overlays = [
-            # "pkgs" currently points to unstable
-            # The following overlay allows you to specify "pkgs.stable" for stable versions
-            # and "pkgs.master" for versions on master
-            (
-              final: prev:
-                let
-                  inherit (prev.stdenv) system;
-                in
-                {
-                  master = nixpkgs-master.legacyPackages.${system};
-                  stable = nixos-stable.legacyPackages.${system};
-                }
-            )
-            fenix.overlays.default
-            # Add in custom defined packages in the pkgs directory
-            # (
-            #   final: prev: { flake = self; } // import ./pkgs final prev
-            # )
-          ];
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nixpkgs-master,
+    home-manager,
+    nixos-stable,
+    flake-parts,
+    ...
+  }:
+    with nixpkgs.lib; let
+      # overlay-master = final: prev: {
+      #   master = nixpkgs-master.legacyPackages.${prev.system};
+      # };
+      # todo remove above
+      nixpkgsConfig = with inputs; {
+        config = {
+          allowUnfree = true;
         };
-        # sharedOptions = { config, options, ... }: {
-        #  options.myWindowManager = mkOption {
-        #     type = types.enum [ "hyprland" "cosmic" ];
-        #     default = "hyprland";
-        #     description = "Choose which Window Manager to use (hyprland or cosmic)";  
-        #   };
+        overlays = [
+          # "pkgs" currently points to unstable
+          # The following overlay allows you to specify "pkgs.stable" for stable versions
+          # and "pkgs.master" for versions on master
+          (
+            final: prev: let
+              inherit (prev.stdenv) system;
+            in {
+              master = nixpkgs-master.legacyPackages.${system};
+              stable = nixos-stable.legacyPackages.${system};
+            }
+          )
+          fenix.overlays.default
+          # Add in custom defined packages in the pkgs directory
+          # (
+          #   final: prev: { flake = self; } // import ./pkgs final prev
+          # )
+          (
+            final: prev: {
+              frida-tools = prev.frida-tools.overrideAttrs (old: {
+                src = prev.fetchPypi {
+                  pname = "frida-tools";
+                  version = "12.3.0";
+                  hash = "sha256-jtxn0a43kv9bLcY1CM3k0kf5K30Ne/FT10ohptWNwEU=";
+                };
+              });
+            }
+          )
+        ];
+      };
+      # sharedOptions = { config, options, ... }: {
+      #  options.myWindowManager = mkOption {
+      #     type = types.enum [ "hyprland" "cosmic" ];
+      #     default = "hyprland";
+      #     description = "Choose which Window Manager to use (hyprland or cosmic)";
+      #   };
 
-        #   options = {
-        #     # This is where the configuration is applied
-        #     windowManager = config.myWindowManager;
-        #   };
-        # };
-        nixosModules = { user, host }: with inputs; [
+      #   options = {
+      #     # This is where the configuration is applied
+      #     windowManager = config.myWindowManager;
+      #   };
+      # };
+      nixosModules = {
+        user,
+        host,
+      }:
+        with inputs; [
           # WM config
           # sharedOptions
           # Main `nixos` config
@@ -109,22 +121,22 @@
           {
             nixpkgs = nixpkgsConfig;
             # Pins channels and flake registry to use the same nixpkgs as this flake.
-            nix.registry = nixpkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
+            nix.registry = nixpkgs.lib.mapAttrs (_: value: {flake = value;}) inputs;
             # `home-manager` config
             users.users.${user} = {
               home = "/home/${user}";
               isNormalUser = true;
               group = "${user}";
-              extraGroups = [ "wheel" ];
+              extraGroups = ["wheel" "wireshark"];
             };
-            users.groups.${user} = { };
+            users.groups.${user} = {};
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
               users.${user} = import (./. + "/hosts/${host}/home.nix");
               # TODO this is not per-system, this is same for every system rn which is not correct
-              extraSpecialArgs = { windowManager = "hyprland"; };
+              extraSpecialArgs = {windowManager = "hyprland";};
               sharedModules = [
                 # sharedOptions
                 # nix-index-database.hmModules.nix-index
@@ -135,8 +147,8 @@
           }
           nixos-cosmic.nixosModules.default
         ];
-      in
-      flake-parts.lib.mkFlake { inherit inputs; } {
+    in
+      flake-parts.lib.mkFlake {inherit inputs;} {
         flake = {
           nixosConfigurations = {
             mainpc = nixpkgs.lib.nixosSystem {
@@ -145,7 +157,10 @@
                 user = "starnick";
                 host = "mainpc";
               };
-              specialArgs = { inherit inputs nixpkgs; windowManager = "hyprland"; };
+              specialArgs = {
+                inherit inputs nixpkgs;
+                windowManager = "hyprland";
+              };
             };
             laptop = nixpkgs.lib.nixosSystem {
               system = "x86_64-linux";
@@ -153,10 +168,13 @@
                 user = "starnick";
                 host = "laptop";
               };
-              specialArgs = { inherit inputs nixpkgs; windowManager = "hyprland"; };
+              specialArgs = {
+                inherit inputs nixpkgs;
+                windowManager = "hyprland";
+              };
             };
           };
         };
-        systems = [ "x86_64-linux" ];
+        systems = ["x86_64-linux"];
       };
 }
