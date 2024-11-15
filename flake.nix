@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixos-stable";
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # home-manager-unstable = {
     #   url = "github:nix-community/home-manager";
     #  inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -146,6 +151,7 @@
             };
           }
           nixos-cosmic.nixosModules.default
+          nix-index-database.nixosModules.nix-index
         ];
     in
       flake-parts.lib.mkFlake {inherit inputs;} {

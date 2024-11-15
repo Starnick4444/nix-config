@@ -58,7 +58,7 @@ in {
           git
           kitty
           yazi
-          comma
+          # comma
           obsidian
 
           # Office
