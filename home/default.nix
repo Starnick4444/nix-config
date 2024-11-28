@@ -58,8 +58,8 @@ in {
           git
           kitty
           yazi
-          # comma
           obsidian
+          zoxide
 
           # Office
           libreoffice-fresh

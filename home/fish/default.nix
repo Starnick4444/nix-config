@@ -70,7 +70,8 @@ let
 
     ls = "eza -l";
     cat = "bat";
-    fd = "fd -Lu";
+    fd = "fd -L";
+    cd = "z";
   };
 in
 {
@@ -80,7 +81,7 @@ in
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
-    shellInitLast = "direnv hook fish | source";
+    shellInitLast = "direnv hook fish | zoxide init fish | source";
     plugins = [
       { name = "done"; inherit (pkgs.fishPlugins.done) src; }
     ];
