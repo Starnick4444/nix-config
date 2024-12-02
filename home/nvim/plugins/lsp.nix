@@ -34,6 +34,16 @@
             enable = true;
             settings.formatting.command = [{__raw = "get_nix_formatter()";}];
           };
+          dockerls.enable = true;
+          # csharp_ls.enable = true;
+          eslint.enable = true;
+          # fish_lsp.enable = true;
+          html.enable = true;
+          jsonls.enable = true;
+          postgres_lsp.enable = true;
+          buf_ls.enable = true;
+          # python type checker pyright.enable = true;
+          # generic sql lsp sqls.enable = true;
         };
       };
     };
