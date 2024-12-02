@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      package = pkgs.nerdfonts;
+      package = pkgs.nerd-fonts.sauce-code-pro;
       name = "SauceCodePro Nerd Font Mono";
     };
     shellIntegration.enableFishIntegration = true;

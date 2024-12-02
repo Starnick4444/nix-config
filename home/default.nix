@@ -84,7 +84,7 @@ in {
         ]
         ++ optionals cfg.includeFonts [
           # Fonts
-          nerdfonts
+          nerd-fonts.sauce-code-pro
           fira-code
           noto-fonts-emoji
         ]
