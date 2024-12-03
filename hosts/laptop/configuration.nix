@@ -27,8 +27,8 @@ in {
 
     kernel.sysctl."vm.max_heap_count" = 1048576;
     # use latest kernel
-    kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackages_cachyos;
+    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_cachyos;
 
     # tmp.useTmpfs = true;
   };
