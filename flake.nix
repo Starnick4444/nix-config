@@ -50,6 +50,12 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = inputs @ {
@@ -152,6 +158,7 @@
           }
           nixos-cosmic.nixosModules.default
           nix-index-database.nixosModules.nix-index
+          chaotic.nixosModules.default
         ];
     in
       flake-parts.lib.mkFlake {inherit inputs;} {
