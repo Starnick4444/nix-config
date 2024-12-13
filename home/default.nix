@@ -121,6 +121,9 @@ in {
           wireshark
           burpsuite
 
+          # Cross compilation
+          cargo-cross
+
           # Work packages 2
           # postgresql
           # awscli2

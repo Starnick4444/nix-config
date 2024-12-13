@@ -25,7 +25,7 @@
 
       colorizer = {
         enable = true;
-        userDefaultOptions.names = false;
+        # userDefaultOptions.names = false;
       };
 
       oil.enable = true;
