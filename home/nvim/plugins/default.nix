@@ -23,7 +23,7 @@
 
       nvim-autopairs.enable = true;
 
-      nvim-colorizer = {
+      colorizer = {
         enable = true;
         userDefaultOptions.names = false;
       };

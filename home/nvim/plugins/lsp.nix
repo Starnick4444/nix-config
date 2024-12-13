@@ -35,7 +35,7 @@
             settings.formatting.command = [{__raw = "get_nix_formatter()";}];
           };
           dockerls.enable = true;
-          # csharp_ls.enable = true;
+          csharp_ls.enable = true;
           eslint.enable = true;
           # fish_lsp.enable = true;
           html.enable = true;
