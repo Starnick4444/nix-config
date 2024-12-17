@@ -49,6 +49,27 @@
           ];
         };
       };
+
+      # for now, cant get documentation to auto show
+      blink-cmp = {
+        enable = false;
+        settings = {
+          keymap = {
+            preset = "enter";
+            "<Tab>" = [
+              "select_next"
+              "fallback"
+            ];
+            "<S-Tab>" = [
+              "select_prev"
+              "fallback"
+            ];
+          };
+          windows.documentation = {
+            auto_show = true;
+          };
+        };
+      };
     };
   };
 }
