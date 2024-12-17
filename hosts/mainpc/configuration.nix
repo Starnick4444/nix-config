@@ -17,7 +17,7 @@ in {
     kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.fbdev=1" "nvidia-drm.modeset=1"];
 
     # wifi drivers
-    extraModulePackages = with config.boot.kernelPackages; [rtl88x2bu];
+    extraModulePackages = with config.boot.kernelPackages; [rtw88];
 
     initrd.systemd.enable = true;
 
