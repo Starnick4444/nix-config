@@ -11,6 +11,7 @@ in {
     ./wm
     ./nix-path
     ./games # TODO make this optional work (maybe always import the module and have the option defined there)
+    ./style
   ];
 
   options.my-linux = {

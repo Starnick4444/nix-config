@@ -56,6 +56,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = inputs @ {
@@ -159,6 +163,7 @@
           nixos-cosmic.nixosModules.default
           nix-index-database.nixosModules.nix-index
           chaotic.nixosModules.default
+          stylix.nixosModules.stylix
         ];
     in
       flake-parts.lib.mkFlake {inherit inputs;} {

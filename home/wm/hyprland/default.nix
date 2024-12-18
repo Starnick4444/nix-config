@@ -3,7 +3,6 @@
     ./hyprlock
     ./rofi
     ./waybar
-    ./gtk
   ];
 
   wayland.windowManager.hyprland = {

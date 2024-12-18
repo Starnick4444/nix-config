@@ -1,23 +1,25 @@
 {pkgs, ...}: {
   programs.kitty = {
     enable = true;
+    /*
     font = {
       package = pkgs.nerd-fonts.sauce-code-pro;
       name = "SauceCodePro Nerd Font Mono";
     };
+    */
     shellIntegration.enableFishIntegration = true;
     settings = {
       bold_font = "auto";
       italic_font = "auto";
       bold_italic_font = "auto";
-      font_size = 12;
+      # font_size = 12;
       strip_trailing_spaces = "smart";
       enable_audio_bell = "no";
       # term = "xterm-256color";
       scrollback_lines = 100000;
       window_padding_width = 4;
 
-      background_opacity = "0.7";
+      # background_opacity = "0.7";
       background_blur = 0;
 
       # foreground = "#D8DEE9";
@@ -27,6 +29,7 @@
       # url_color = "#0087BD";
       # cursor = "#81A1C1";
 
+      /*
       base0 = "131213";
       base1 = "2f1823";
       base2 = "472234";
@@ -43,6 +46,7 @@
       base13 = "008080";
       base14 = "a24030";
       base15 = "a24030";
+      */
     };
   };
 }

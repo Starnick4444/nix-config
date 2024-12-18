@@ -139,6 +139,10 @@ in {
         ];
     };
 
+    stylix = {
+      targets.hyprlock.enable = false;
+    };
+
     fonts.fontconfig.enable = cfg.includeFonts;
 
     # Nicely reload system units when changing configs
