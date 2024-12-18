@@ -140,7 +140,10 @@ in {
     };
 
     stylix = {
-      targets.hyprlock.enable = false;
+      targets = {
+        hyprlock.enable = false;
+        nixvim.enable = false;
+      };
     };
 
     fonts.fontconfig.enable = cfg.includeFonts;
