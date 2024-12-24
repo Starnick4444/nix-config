@@ -40,9 +40,12 @@ in {
 
   time.timeZone = "Europe/Budapest";
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    bluetooth.enable = true;
   };
 
   services.auto-cpufreq = {
