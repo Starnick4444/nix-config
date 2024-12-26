@@ -56,6 +56,8 @@ in {
     programs.fish.enable = true;
     programs.wireshark.enable = true;
     programs.nix-index-database.comma.enable = true;
+
+    virtualisation.docker.enable = true;
     # programs.nix-ld.enable = true;
 
     system.stateVersion = "24.05";

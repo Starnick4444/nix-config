@@ -142,7 +142,7 @@
               home = "/home/${user}";
               isNormalUser = true;
               group = "${user}";
-              extraGroups = ["wheel" "wireshark"];
+              extraGroups = ["wheel" "wireshark" "docker"];
             };
             users.groups.${user} = {};
             home-manager = {
