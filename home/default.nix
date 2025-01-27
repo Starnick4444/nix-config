@@ -113,6 +113,8 @@ in {
           frida-tools
           (pkgs.callPackage ./objection/default.nix {})
 
+          google-cloud-sdk
+
           # benchmarking
           heaptrack
           samply
