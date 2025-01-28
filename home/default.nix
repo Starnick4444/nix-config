@@ -104,7 +104,7 @@ in {
           ])
           rust-analyzer
           gcc
-          loc
+          tokei
           android-studio
           # android-studio-tools
           android-tools
