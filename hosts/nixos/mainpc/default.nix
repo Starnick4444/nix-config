@@ -112,7 +112,7 @@
       "nvidia-drm.modeset=1"
     ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {
       systemd-boot = {
