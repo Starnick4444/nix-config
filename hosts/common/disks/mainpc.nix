@@ -5,7 +5,7 @@
     disk = {
       primary = {
         type = "disk";
-        device = "/dev/nvme0n1"; # 2TB
+        device = "/dev/nvme1n1"; # 2TB
         content = {
           type = "gpt";
           partitions = {
