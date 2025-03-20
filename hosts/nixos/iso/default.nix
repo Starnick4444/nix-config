@@ -5,8 +5,7 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   imports = lib.flatten [
     "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
     #"${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
@@ -28,7 +27,8 @@
     isProduction = lib.mkForce false;
 
     # Needed because we don't use hosts/common/core for iso
-    inherit (inputs.nix-secrets)
+    inherit
+      (inputs.nix-secrets)
       domain
       networking
       ;
@@ -63,6 +63,31 @@
   # The default compression-level is (6) and takes too long on some machines (>30m). 3 takes <2m
   isoImage.squashfsCompression = "zstd -Xcompression-level 3";
 
+  environment.shellAliases = {
+    starnickOS = "${pkgs.writeShellScript "starnickOS" ''
+      hostname=$1
+      username=$2
+      sudo nix run github:nix-community/disko -- --mode disko --flake github:Starnick4444/nix-config#$hostname
+      sudo nixos-install --flake github:Starnick4444/nix-config#$hostname
+      echo "please set password for user $username"
+      sudo passwd --root /mnt $username
+      mkdir -p /mnt/home/$username
+      git clone https://github.com/Starnick4444/nix-config /mnt/home/$username/src/nix/nix-config
+    ''}";
+    disko-starnick = "${pkgs.writeShellScript "disko-starnick" ''
+      sudo nix run github:nix-community/disko -- --mode disko --flake github:Starnick4444/nix-config#$1
+    ''}";
+    install-starnickOS = "${pkgs.writeShellScript "install-starnickOS" ''
+      hostname=$1
+      username=$2
+      sudo nixos-install --flake github:Starnick4444/nix-config#$hostname
+      echo "please set password for user $username"
+      sudo passwd --root /mnt $username
+      mkdir -p /mnt/home/$username
+      git clone https://github.com/Starnick/nix-config /mnt/home/$username/src/nix/nix-config
+    ''}";
+  };
+
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
     config.allowUnfree = true;
@@ -79,7 +104,7 @@
   services = {
     qemuGuest.enable = true;
     openssh = {
-      ports = [ config.hostSpec.networking.ports.tcp.ssh ];
+      ports = [config.hostSpec.networking.ports.tcp.ssh];
       settings.PermitRootLogin = lib.mkForce "yes";
     };
   };
@@ -97,7 +122,7 @@
     wireless = {
       enable = true;
       networks = {
-        "Nemes-Home" = {
+        "Nemes-Home_5g" = {
           psk = "2003Nemes";
         };
       };
@@ -105,7 +130,7 @@
   };
 
   systemd = {
-    services.sshd.wantedBy = lib.mkForce [ "multi-user.target" ];
+    services.sshd.wantedBy = lib.mkForce ["multi-user.target"];
     # gnome power settings to not turn off screen
     targets = {
       sleep.enable = false;
