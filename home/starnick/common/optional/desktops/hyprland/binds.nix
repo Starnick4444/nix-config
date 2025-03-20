@@ -214,7 +214,7 @@ in
         #
         "SHIFTALT,r,exec,hyprctl reload" # reload the configuration file
         # "SUPER,l,exec,pidof hyprlock || hyprlock" # lock the wm
-        "SUPER,e,exec,wlogout" # lock the wm
+        "SUPER,O,exec,wlogout" # lock the wm
       ];
   };
 }
