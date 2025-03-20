@@ -1,10 +1,11 @@
 # NOTE: ... is needed because dikso passes diskoFile
-{...}: {
+{ ... }:
+{
   disko.devices = {
     disk = {
       primary = {
         type = "disk";
-        device = "/dev/nvme0n1"; # 2TB
+        device = "/dev/nvme1n1"; # 2TB
         content = {
           type = "gpt";
           partitions = {
@@ -17,14 +18,14 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["defaults"];
+                mountOptions = [ "defaults" ];
               };
             };
             root = {
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"]; # override existing partition
+                extraArgs = [ "-f" ]; # override existing partition
                 mountpoint = "/";
                 mountOptions = [
                   "compress=zstd"
