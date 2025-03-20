@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     #
     # ========== Required Configs ==========
@@ -18,6 +19,7 @@
 
     # common/optional/atuin.nix # not for now
     common/optional/xdg.nix # file associations
+    common/optional/stylix.nix
     # common/optional/sops.nix
   ];
 

@@ -19,6 +19,7 @@
 
     common/optional/atuin.nix
     common/optional/xdg.nix # file associations
+    common/optional/stylix.nix
     # common/optional/sops.nix
   ];
 

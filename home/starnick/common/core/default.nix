@@ -17,7 +17,6 @@ in
       "modules/home"
     ])
     ./${platform}.nix
-    ./stylix.nix
     ./fish
     ./nixvim
     ./bash.nix

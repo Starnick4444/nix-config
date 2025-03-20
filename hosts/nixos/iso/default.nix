@@ -5,7 +5,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   imports = lib.flatten [
     "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
     #"${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
@@ -27,15 +28,17 @@
     isProduction = lib.mkForce false;
 
     # Needed because we don't use hosts/common/core for iso
-    inherit
-      (inputs.nix-secrets)
-      domain
-      networking
-      ;
+    /*
+      inherit
+        (inputs.nix-secrets)
+        domain
+        networking
+        ;
+    */
 
     #TODO(git): This is stuff for home/ta/common/core/git.nix. should create home/ta/common/optional/development.nix so core git.nix doesn't use it.
-    handle = "emergentmind";
-    email.gitHub = inputs.nix-secrets.email.gitHub;
+    handle = "Starnick4444";
+    email.gitHub = "nemes.bence1@gmail.com";
   };
 
   # root's ssh key are mainly used for remote deployment
@@ -104,7 +107,7 @@
   services = {
     qemuGuest.enable = true;
     openssh = {
-      ports = [config.hostSpec.networking.ports.tcp.ssh];
+      ports = [ 22 ];
       settings.PermitRootLogin = lib.mkForce "yes";
     };
   };
@@ -130,7 +133,7 @@
   };
 
   systemd = {
-    services.sshd.wantedBy = lib.mkForce ["multi-user.target"];
+    services.sshd.wantedBy = lib.mkForce [ "multi-user.target" ];
     # gnome power settings to not turn off screen
     targets = {
       sleep.enable = false;
