@@ -1,16 +1,16 @@
-{pkgs, ...}: {
-  imports = [./nyaa.nix];
+{ pkgs, ... }:
+{
+  imports = [ ./nyaa.nix ];
 
   home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
+    inherit (pkgs)
       ffmpeg
       spotify
       mpv
       qbittorrent
+      stremio
       ;
-    inherit
-      (pkgs.stable)
+    inherit (pkgs.stable)
       calibre
       ;
   };
