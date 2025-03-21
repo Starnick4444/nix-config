@@ -1,117 +1,116 @@
 {
   description = "EmergentMind's Nix-Config";
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    inherit (nixpkgs) lib;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+      inherit (nixpkgs) lib;
 
-    #
-    # ========= Architectures =========
-    #
-    forAllSystems = nixpkgs.lib.genAttrs [
-      "x86_64-linux"
-      #"aarch64-darwin"
-    ];
+      #
+      # ========= Architectures =========
+      #
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        #"aarch64-darwin"
+      ];
 
-    #
-    # ========= Host Config Functions =========
-    #
-    # Handle a given host config based on whether its underlying system is nixos or darwin
-    mkHost = host: isDarwin: {
-      ${host} = let
-        func =
-          if isDarwin
-          then inputs.nix-darwin.lib.darwinSystem
-          else lib.nixosSystem;
-        systemFunc = func;
-      in
-        systemFunc {
-          specialArgs = {
-            inherit
-              inputs
-              outputs
-              isDarwin
-              ;
+      #
+      # ========= Host Config Functions =========
+      #
+      # Handle a given host config based on whether its underlying system is nixos or darwin
+      mkHost = host: isDarwin: {
+        ${host} =
+          let
+            func = if isDarwin then inputs.nix-darwin.lib.darwinSystem else lib.nixosSystem;
+            systemFunc = func;
+          in
+          systemFunc {
+            specialArgs = {
+              inherit
+                inputs
+                outputs
+                isDarwin
+                ;
 
-            # ========== Extend lib with lib.custom ==========
-            # NOTE: This approach allows lib.custom to propagate into hm
-            # see: https://github.com/nix-community/home-manager/pull/3454
-            lib = nixpkgs.lib.extend (self: super: {custom = import ./lib {inherit (nixpkgs) lib;};});
+              # ========== Extend lib with lib.custom ==========
+              # NOTE: This approach allows lib.custom to propagate into hm
+              # see: https://github.com/nix-community/home-manager/pull/3454
+              lib = nixpkgs.lib.extend (self: super: { custom = import ./lib { inherit (nixpkgs) lib; }; });
+            };
+            modules = [
+              ./hosts/${if isDarwin then "darwin" else "nixos"}/${host}
+            ];
           };
-          modules = [
-            ./hosts/${
-              if isDarwin
-              then "darwin"
-              else "nixos"
-            }/${host}
-          ];
-        };
-    };
-    # Invoke mkHost for each host config that is declared for either nixos or darwin
-    mkHostConfigs = hosts: isDarwin: lib.foldl (acc: set: acc // set) {} (lib.map (host: mkHost host isDarwin) hosts);
-    # Return the hosts declared in the given directory
-    readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
-  in {
-    #
-    # ========= Overlays =========
-    #
-    # Custom modifications/overrides to upstream packages.
-    overlays = import ./overlays {inherit inputs;};
+      };
+      # Invoke mkHost for each host config that is declared for either nixos or darwin
+      mkHostConfigs =
+        hosts: isDarwin: lib.foldl (acc: set: acc // set) { } (lib.map (host: mkHost host isDarwin) hosts);
+      # Return the hosts declared in the given directory
+      readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
+    in
+    {
+      #
+      # ========= Overlays =========
+      #
+      # Custom modifications/overrides to upstream packages.
+      overlays = import ./overlays { inherit inputs; };
 
-    #
-    # ========= Host Configurations =========
-    #
-    # Building configurations is available through `just rebuild` or `nixos-rebuild --flake .#hostname`
-    nixosConfigurations = mkHostConfigs (readHosts "nixos") false;
-    #darwinConfigurations = mkHostConfigs (readHosts "darwin") true;
+      #
+      # ========= Host Configurations =========
+      #
+      # Building configurations is available through `just rebuild` or `nixos-rebuild --flake .#hostname`
+      nixosConfigurations = mkHostConfigs (readHosts "nixos") false;
+      #darwinConfigurations = mkHostConfigs (readHosts "darwin") true;
 
-    #
-    # ========= Packages =========
-    #
-    # Add custom packages to be shared or upstreamed.
-    /*
-    packages = forAllSystems (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ self.overlays.default ];
-        };
-      in
-      lib.packagesFromDirectoryRecursive {
-        callPackage = lib.callPackageWith pkgs;
-        directory = ./pkgs/common;
-      }
-    );
-    */
+      #
+      # ========= Packages =========
+      #
+      # Add custom packages to be shared or upstreamed.
+      /*
+        packages = forAllSystems (
+          system:
+          let
+            pkgs = import nixpkgs {
+              inherit system;
+              overlays = [ self.overlays.default ];
+            };
+          in
+          lib.packagesFromDirectoryRecursive {
+            callPackage = lib.callPackageWith pkgs;
+            directory = ./pkgs/common;
+          }
+        );
+      */
 
-    #
-    # ========= Formatting =========
-    #
-    # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
-    # Pre-commit checks
-    checks = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-        import ./checks.nix {inherit inputs system pkgs;}
-    );
-    #
-    # ========= DevShell =========
-    #
-    # Custom shell for bootstrapping on new hosts, modifying nix-config, and secrets management
-    devShells = forAllSystems (
-      system:
+      #
+      # ========= Formatting =========
+      #
+      # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      # Pre-commit checks
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./checks.nix { inherit inputs system pkgs; }
+      );
+      #
+      # ========= DevShell =========
+      #
+      # Custom shell for bootstrapping on new hosts, modifying nix-config, and secrets management
+      devShells = forAllSystems (
+        system:
         import ./shell.nix {
           pkgs = nixpkgs.legacyPackages.${system};
           checks = self.checks.${system};
         }
-    );
-  };
+      );
+    };
 
   inputs = {
     #
@@ -148,10 +147,10 @@
     };
     # Secrets management. See ./docs/secretsmgmt.md
     /*
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+      sops-nix = {
+        url = "github:mic92/sops-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     */
     # Declarative vms using libvirt
     nixvirt = {
@@ -191,10 +190,10 @@
     # Private secrets repo.  See ./docs/secretsmgmt.md
     # Authenticate via ssh and use shallow clone
     /*
-    nix-secrets = {
-      url = "git+ssh://git@github.com/Starnick4444/nix-secrets.git?ref=main&shallow=1";
-      inputs = {};
-    };
+      nix-secrets = {
+        url = "git+ssh://git@github.com/Starnick4444/nix-secrets.git?ref=main&shallow=1";
+        inputs = {};
+      };
     */
 
     nixos-hardware-genoa.url = "github:emergentmind/nixos-hardware";

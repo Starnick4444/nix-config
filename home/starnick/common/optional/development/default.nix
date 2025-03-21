@@ -5,15 +5,16 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
 in
-  # publicGitEmail = config.hostSpec.email.gitHub;
-  # sshFolder = "${config.home.homeDirectory}/.ssh";
-  # publicKey = "${sshFolder}/id_manu.pub";
-  # privateGitConfig = "${config.home.homeDirectory}/.config/git/gitconfig.private";
-  # workEmail = inputs.nix-secrets.email.work;
-  # workGitConfig = "${config.home.homeDirectory}/.config/git/gitconfig.work";
-  /*
+# publicGitEmail = config.hostSpec.email.gitHub;
+# sshFolder = "${config.home.homeDirectory}/.ssh";
+# publicKey = "${sshFolder}/id_manu.pub";
+# privateGitConfig = "${config.home.homeDirectory}/.config/git/gitconfig.private";
+# workEmail = inputs.nix-secrets.email.work;
+# workGitConfig = "${config.home.homeDirectory}/.config/git/gitconfig.work";
+/*
   workGitUrlsTable = lib.optionalAttrs config.hostSpec.isWork (
     builtins.listToAttrs (
       map (url: {
@@ -24,64 +25,63 @@ in
       }) (lib.splitString " " inputs.nix-secrets.work.git.servers)
     )
   );
-  */
-  {
-    imports = lib.custom.scanPaths ./.;
+*/
+{
+  imports = lib.custom.scanPaths ./.;
 
-    home.packages = lib.flatten [
-      (builtins.attrValues {
-        inherit
-          (pkgs)
-          # Development
-          direnv
-          delta # diffing
-          # act # github workflow runner
-          # gh # github cli
-          # glab # gitlab cli
-          yq-go # Parser for Yaml and Toml Files, that mirrors jq
-          postman
-          # "jetbrains.datagrip"
-          nix-init
-          # benchmarking
-          heaptrack
-          samply
-          # nix
-          # nixpkgs-review
-          # networking
-          # nmap
-          wireshark
-          # cross-compilation
-          cargo-cross
-          # Diffing
-          difftastic
-          # serial debugging
-          # screen
-          # Standard man pages for linux API
-          man-pages
-          man-pages-posix
-          ;
-      })
+  home.packages = lib.flatten [
+    (builtins.attrValues {
+      inherit (pkgs)
+        # Development
+        direnv
+        delta # diffing
+        # act # github workflow runner
+        # gh # github cli
+        # glab # gitlab cli
+        yq-go # Parser for Yaml and Toml Files, that mirrors jq
+        postman
+        # "jetbrains.datagrip"
+        nix-init
+        # benchmarking
+        heaptrack
+        samply
+        # nix
+        # nixpkgs-review
+        # networking
+        # nmap
+        wireshark
+        # cross-compilation
+        cargo-cross
+        # Diffing
+        difftastic
+        # serial debugging
+        # screen
+        # Standard man pages for linux API
+        man-pages
+        man-pages-posix
+        ;
+    })
 
-      #    (lib.optionals pkgs.stdenv.isLinux (
-      #      builtins.attrValues {
-      #        inherit (pkgs)
-      #          gdb
-      #          pwndbg
-      #          ;
-      #      }
-      #    ))
-    ];
+    #    (lib.optionals pkgs.stdenv.isLinux (
+    #      builtins.attrValues {
+    #        inherit (pkgs)
+    #          gdb
+    #          pwndbg
+    #          ;
+    #      }
+    #    ))
+  ];
 
-    #NOTE: Already enabled earlier, this is just extra config
-    programs.git = {
-      userName = "Starnick4444";
-      userEmail = "nemes.bence1@gmail.com";
+  #NOTE: Already enabled earlier, this is just extra config
+  programs.git = {
+    userName = "Starnick4444";
+    userEmail = "nemes.bence1@gmail.com";
 
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
+    extraConfig = {
+      init.defaultBranch = "main";
     };
-    /*
+  };
+  /*
     programs.git = {
       # userName = config.hostSpec.handle;
       # userEmail = publicGitEmail;
@@ -151,5 +151,5 @@ in
         name = "${config.hostSpec.userFullName}"
         email = "${workEmail}"
     '';
-    */
-  }
+  */
+}

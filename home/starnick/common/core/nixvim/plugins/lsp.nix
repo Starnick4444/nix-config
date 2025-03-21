@@ -32,7 +32,7 @@
           texlab.enable = true;
           nil_ls = {
             enable = true;
-            settings.formatting.command = [ { __raw = "get_nix_formatter()"; } ];
+            # settings.formatting.command = [ { __raw = "get_nix_formatter()"; } ];
           };
           dockerls.enable = true;
           csharp_ls.enable = true;

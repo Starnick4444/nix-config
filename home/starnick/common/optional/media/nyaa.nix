@@ -1,5 +1,6 @@
-{inputs, ...}: {
-  imports = [inputs.nyaa.homeManagerModule];
+{ inputs, ... }:
+{
+  imports = [ inputs.nyaa.homeManagerModule ];
   programs.nyaa = {
     enable = true;
     client.qBittorrent = {

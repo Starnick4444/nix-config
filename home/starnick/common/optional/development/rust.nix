@@ -4,42 +4,42 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   # inherit (inputs.self.lib) toTOML;
   /*
-  cargoConfig = {
-    # Ref: https://doc.rust-lang.org/cargo/reference/registry-authentication.html#recommended-configuration
-    registry.global-credential-providers = [
-      "cargo:token"
-      "cargo:libsecret"
-    ];
+    cargoConfig = {
+      # Ref: https://doc.rust-lang.org/cargo/reference/registry-authentication.html#recommended-configuration
+      registry.global-credential-providers = [
+        "cargo:token"
+        "cargo:libsecret"
+      ];
 
-    install.root = "${config.home.homeDirectory}/.local";
+      install.root = "${config.home.homeDirectory}/.local";
 
-    build.target-dir = "${config.xdg.cacheHome}/cargo/target";
+      build.target-dir = "${config.xdg.cacheHome}/cargo/target";
 
-    # Prefer MSRV-compatible dependency versions.
-    resolver.incompatible-rust-versions = "fallback";
+      # Prefer MSRV-compatible dependency versions.
+      resolver.incompatible-rust-versions = "fallback";
 
-    target = {
-      "${pkgs.hostPlatform.rust.rustcTarget}".linker = gcc-lld;
-      "riscv64gc-unknown-linux-gnu".linker = "riscv64-unknown-linux-gnu-gcc";
-      "aarch64-unknown-linux-gnu".linker = "aarch64-unknown-linux-gnu-gcc";
+      target = {
+        "${pkgs.hostPlatform.rust.rustcTarget}".linker = gcc-lld;
+        "riscv64gc-unknown-linux-gnu".linker = "riscv64-unknown-linux-gnu-gcc";
+        "aarch64-unknown-linux-gnu".linker = "aarch64-unknown-linux-gnu-gcc";
+      };
     };
-  };
   */
   /*
-
-  # Seems it reject missing fields.
-  # https://github.com/rustsec/rustsec/blob/5058319167c0a86eae7bf25ebc820a8eefeb1c55/cargo-audit/audit.toml.example
-  cargoAudit = {
-    database = {
-      path = "${config.xdg.cacheHome}/cargo/advisory-db";
-      url = "https://github.com/RustSec/advisory-db.git";
-      fetch = true;
-      stale = false;
+    # Seems it reject missing fields.
+    # https://github.com/rustsec/rustsec/blob/5058319167c0a86eae7bf25ebc820a8eefeb1c55/cargo-audit/audit.toml.example
+    cargoAudit = {
+      database = {
+        path = "${config.xdg.cacheHome}/cargo/advisory-db";
+        url = "https://github.com/RustSec/advisory-db.git";
+        fetch = true;
+        stale = false;
+      };
     };
-  };
   */
   # `--no-rosegment` is required for flamegraph
   # https://github.com/flamegraph-rs/flamegraph#cargo-flamegraph
@@ -68,7 +68,8 @@
       ];
     }
   );
-in {
+in
+{
   home.packages = with pkgs; [
     (lib.hiPrio rustfmt)
     rustToolchain
@@ -87,8 +88,7 @@ in {
 
   # Setup cargo directories.
   # https://doc.rust-lang.org/cargo/commands/cargo.html?highlight=cargo_home#files
-  home.sessionVariables."CARGO_HOME" = "${
-    pkgs.runCommandLocal "cargo-home"
+  home.sessionVariables."CARGO_HOME" = "${pkgs.runCommandLocal "cargo-home"
     {
       # cargoConfig = toTOML cargoConfig;
       # cargoAudit = toTOML cargoAudit;
@@ -102,7 +102,7 @@ in {
     ''
   }";
 
-  home.activation.setupCargoDirectories = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.setupCargoDirectories = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run mkdir -p "${config.xdg.configHome}"/cargo "${config.xdg.cacheHome}"/cargo/{registry,git}
     if [[ ! -e "${config.xdg.configHome}"/cargo/credentials.toml ]]; then
       run touch -a "${config.xdg.configHome}"/cargo/credentials.toml

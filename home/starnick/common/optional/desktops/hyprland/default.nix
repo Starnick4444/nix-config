@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./binds.nix
     ./scripts.nix
@@ -15,7 +16,7 @@
     enable = true;
     systemd = {
       enable = true;
-      variables = ["--all"]; # fix for https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
+      variables = [ "--all" ]; # fix for https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
       # TODO(hyprland): experiment with whether this is required.
       # Same as default, but stop the graphical session too
       extraCommands = lib.mkBefore [
@@ -29,16 +30,16 @@
       # ========== Environment Vars ==========
       #
       /*
-      env = [
-        "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
-        "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
-        "MOZ_WEBRENDER, 1" # for firefox to run on wayland
-        "XDG_SESSION_TYPE,wayland"
-        "WLR_NO_HARDWARE_CURSORS,1"
-        "WLR_RENDERER_ALLOW_SOFTWARE,1"
-        "QT_QPA_PLATFORM,wayland"
-        "HYPRCURSOR_THEME,rose-pine-hyprcursor" # this will be better than default for now
-      ];
+        env = [
+          "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
+          "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
+          "MOZ_WEBRENDER, 1" # for firefox to run on wayland
+          "XDG_SESSION_TYPE,wayland"
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "WLR_RENDERER_ALLOW_SOFTWARE,1"
+          "QT_QPA_PLATFORM,wayland"
+          "HYPRCURSOR_THEME,rose-pine-hyprcursor" # this will be better than default for now
+        ];
       */
 
       #
@@ -47,14 +48,15 @@
       # parse the monitor spec defined in nix-config/home/<user>/<host>.nix
       monitor = (
         map (
-          m: "${m.name},${
-            if m.enabled
-            then
+          m:
+          "${m.name},${
+            if m.enabled then
               "${toString m.width}x${toString m.height}@${toString m.refreshRate}"
               + ",${toString m.x}x${toString m.y},1"
               + ",transform,${toString m.transform}"
               + ",vrr,${toString m.vrr}"
-            else "disable"
+            else
+              "disable"
           }"
         ) (config.monitors)
       );
@@ -66,26 +68,25 @@
             # "special" # add the special/scratchpad ws
           ];
         in
-          # workspace structure to build "[workspace], monitor:[name], default:[bool], persistent:[bool]"
-          map (
-            ws:
-            # map over workspace IDs first, then map over monitors to check for entries, and contact the empty
-            # string elements created for ws and m combinations that don't match our actual conditions
-              lib.concatMapStrings (
-                m:
-                # workspaces with a config.monitors assignment
-                  if toString ws == m.workspace
-                  then "${toString ws}, monitor:${m.name}, default:true, persistent:true"
-                  else
-                    # workspace 1 is persistent on the primary monitor
-                    if (ws == 1 || ws == "special") && m.primary == true
-                    then "${toString ws}, monitor:${m.name}, default:true, persistent:true"
-                    # FIXME(monitors): need logic to set primary as default monitor for workspaces that don't match above conditions but because we're limited to 'map' it seems to add more complexity than it's worth
-                    else ""
-              )
-              config.monitors
-          )
-          workspaceIDs
+        # workspace structure to build "[workspace], monitor:[name], default:[bool], persistent:[bool]"
+        map (
+          ws:
+          # map over workspace IDs first, then map over monitors to check for entries, and contact the empty
+          # string elements created for ws and m combinations that don't match our actual conditions
+          lib.concatMapStrings (
+            m:
+            # workspaces with a config.monitors assignment
+            if toString ws == m.workspace then
+              "${toString ws}, monitor:${m.name}, default:true, persistent:true"
+            else
+            # workspace 1 is persistent on the primary monitor
+            if (ws == 1 || ws == "special") && m.primary == true then
+              "${toString ws}, monitor:${m.name}, default:true, persistent:true"
+            # FIXME(monitors): need logic to set primary as default monitor for workspaces that don't match above conditions but because we're limited to 'map' it seems to add more complexity than it's worth
+            else
+              ""
+          ) config.monitors
+        ) workspaceIDs
       );
 
       #
@@ -110,10 +111,10 @@
         # hover_icon_on_border = true;
         allow_tearing = true; # used to reduce latency and/or jitter in games
         /*
-        col = {
-          active_border = "rgb(ef1518) rgb(46a2d0) rgb(ee1616) 45deg";
-          inactive-border = "rgb(9b8889)";
-        };
+          col = {
+            active_border = "rgb(ef1518) rgb(46a2d0) rgb(ee1616) 45deg";
+            inactive-border = "rgb(9b8889)";
+          };
         */
 
         layout = "dwindle";

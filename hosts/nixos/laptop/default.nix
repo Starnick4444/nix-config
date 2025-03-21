@@ -7,7 +7,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = lib.flatten [
     #
     # ========== Hardware ==========
@@ -72,7 +73,7 @@
         tcp = {
           ssh = 22;
         };
-        upd = {};
+        upd = { };
       };
     };
     hdr = lib.mkForce false;
@@ -93,7 +94,7 @@
 
   nix = {
     settings = {
-      substituters = ["https://nix-community.cachix.org"];
+      substituters = [ "https://nix-community.cachix.org" ];
     };
   };
 

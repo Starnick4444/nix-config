@@ -23,6 +23,8 @@
       obs-studio
       # VM and RDP
       # remmina
+      fastfetch
+      onefetch
       ;
   };
   #Disabled for now. grimblast
