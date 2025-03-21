@@ -179,6 +179,8 @@ in
         # Move window to workspace
         # (map (n: "SHIFTALT,${n},hy3:movetoworkspace,name:${n}") workspaces)
         (map (n: "${mainMod} SHIFT,${n},movetoworkspace,${n}") workspaces)
+        "${mainMod} SHIFT,l,movetoworkspace, r+1"
+        "${mainMod} SHIFT,h,movetoworkspace, r-1"
 
         # Move window to first empty workspace
         "${mainMod} SHIFT,Y,movetoworkspace, empty"
