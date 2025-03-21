@@ -39,7 +39,7 @@
   #    ------
   monitors = [
     {
-      name = "HMDI-A-1";
+      name = "HDMI-A-1";
       width = 1920;
       height = 1080;
       refreshRate = 75;
