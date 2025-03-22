@@ -84,6 +84,7 @@ in
     cargo-machete
     cargo-outdated
     cargo-show-asm
+    gcc
   ];
 
   # Setup cargo directories.

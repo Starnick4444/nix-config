@@ -6,6 +6,7 @@
     inherit (pkgs)
       # Development
       tokei
+      jujutsu
       # Device imaging
       # rpi-imager
       #etcher #was disabled in nixpkgs due to dependency on insecure version of Electron
