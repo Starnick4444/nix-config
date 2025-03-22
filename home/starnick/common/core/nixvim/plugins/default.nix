@@ -43,7 +43,12 @@
 
       web-devicons.enable = true;
 
-      which-key.enable = true;
+      which-key = {
+        enable = true;
+        settings = {
+          delay = 1000;
+        };
+      };
 
       # TODO: notify?
 
