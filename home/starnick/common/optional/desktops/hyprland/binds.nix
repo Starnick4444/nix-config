@@ -165,8 +165,8 @@ in
         # ========== Workspaces ==========
         #
         # Change workspace
-        (map (n: "${mainMod},${n},workspace,name:${n}") workspaces)
-        "${mainMod}, 0, workspace, name: 10"
+        (map (n: "${mainMod},${n},workspace,${n}") workspaces)
+        "${mainMod}, 0, workspace, 10"
         "${mainMod},Y,workspace, empty"
         "${mainMod},h,workspace, r-1"
         "${mainMod},l,workspace, r+1"
@@ -177,7 +177,7 @@ in
         "${mainMod} ALT,P,movetoworkspacesilent,special"
 
         # Move window to workspace
-        # (map (n: "SHIFTALT,${n},hy3:movetoworkspace,name:${n}") workspaces)
+        # (map (n: "SHIFTALT,${n},hy3:movetoworkspace,{n}") workspaces)
         (map (n: "${mainMod} SHIFT,${n},movetoworkspace,${n}") workspaces)
         "${mainMod} SHIFT,l,movetoworkspace, r+1"
         "${mainMod} SHIFT,h,movetoworkspace, r-1"
