@@ -29,48 +29,50 @@ in
 {
   imports = lib.custom.scanPaths ./.;
 
-  home.packages = lib.flatten [
-    (builtins.attrValues {
-      inherit (pkgs)
-        # Development
-        direnv
-        delta # diffing
-        # act # github workflow runner
-        # gh # github cli
-        # glab # gitlab cli
-        yq-go # Parser for Yaml and Toml Files, that mirrors jq
-        postman
-        # "jetbrains.datagrip"
-        nix-init
-        # benchmarking
-        heaptrack
-        samply
-        # nix
-        # nixpkgs-review
-        # networking
-        # nmap
-        wireshark
-        # cross-compilation
-        cargo-cross
-        # Diffing
-        difftastic
-        # serial debugging
-        # screen
-        # Standard man pages for linux API
-        man-pages
-        man-pages-posix
-        ;
-    })
+  home.packages =
+    lib.flatten [
+      (builtins.attrValues {
+        inherit (pkgs)
+          # Development
+          direnv
+          delta # diffing
+          # act # github workflow runner
+          # gh # github cli
+          # glab # gitlab cli
+          yq-go # Parser for Yaml and Toml Files, that mirrors jq
+          postman
+          # "jetbrains.datagrip"
+          nix-init
+          # benchmarking
+          heaptrack
+          samply
+          # nix
+          # nixpkgs-review
+          # networking
+          # nmap
+          wireshark
+          # cross-compilation
+          cargo-cross
+          # Diffing
+          difftastic
+          # serial debugging
+          # screen
+          # Standard man pages for linux API
+          man-pages
+          man-pages-posix
+          ;
+      })
 
-    #    (lib.optionals pkgs.stdenv.isLinux (
-    #      builtins.attrValues {
-    #        inherit (pkgs)
-    #          gdb
-    #          pwndbg
-    #          ;
-    #      }
-    #    ))
-  ];
+      #    (lib.optionals pkgs.stdenv.isLinux (
+      #      builtins.attrValues {
+      #        inherit (pkgs)
+      #          gdb
+      #          pwndbg
+      #          ;
+      #      }
+      #    ))
+    ]
+    ++ [ pkgs.jetbrains.datagrip ];
 
   #NOTE: Already enabled earlier, this is just extra config
   programs.git = {
