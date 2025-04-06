@@ -1,7 +1,14 @@
 {
   programs.nixvim = {
     plugins = {
-      lsp-format.enable = false;
+      lsp-format = {
+        enable = true;
+        settings = {
+          rust = {
+            exclude = [ "rust-analyzer" ];
+          };
+        };
+      };
 
       lsp = {
         enable = true;
