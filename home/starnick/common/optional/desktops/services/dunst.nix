@@ -33,7 +33,7 @@
         #   %I  iconname (without its path)
         #   %p  progress value if set ([  0%] to [100%]) or nothing
         # Markup is allowed
-        format = "%I %s %p\\n%b";
+        format = "%s %p\\n%b";
 
         #TODO dynamic fonts
         #font = "Droid Sans 12";

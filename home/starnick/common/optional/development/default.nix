@@ -58,8 +58,8 @@ in
           # serial debugging
           # screen
           # Standard man pages for linux API
-          man-pages
-          man-pages-posix
+          # man-pages
+          # man-pages-posix
           ;
       })
 

@@ -6,6 +6,9 @@
   # Enable firmware with a license allowing redistribution
   hardware.enableRedistributableFirmware = true;
 
+  # Disable man-cache, takes a long time to build
+  documentation.man.generateCaches = false;
+
   # This should be handled by config.security.pam.sshAgentAuth.enable
   security.sudo.extraConfig = ''
     Defaults lecture = never # rollback results in sudo lectures after each reboot, it's somewhat useless anyway
@@ -30,5 +33,5 @@
   # ========== Localization ==========
   #
   i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
-  time.timeZone = lib.mkDefault "America/Edmonton";
+  time.timeZone = lib.mkDefault "Europe/Budapest";
 }
