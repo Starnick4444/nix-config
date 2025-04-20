@@ -191,6 +191,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
     #
     # ========= Personal Repositories =========
     #
