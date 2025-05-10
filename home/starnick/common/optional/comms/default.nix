@@ -7,6 +7,7 @@
       # signal-desktop
       #telegram-desktop
       vesktop
+      teamspeak3
       element-desktop
       # slack
       ;
