@@ -26,6 +26,7 @@
         # remmina
         fastfetch
         onefetch
+        pyfa # eve online fitting tool
         ;
     }
     ++ [ pkgs.unstable.jujutsu ];
