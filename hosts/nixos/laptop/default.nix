@@ -131,6 +131,13 @@
     };
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  environment.systemPackages = with pkgs; [ bluedevil ];
+
   #TODO(stylix): move this stuff to separate file but define theme itself per host
   # host-wide styling
 
