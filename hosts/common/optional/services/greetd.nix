@@ -36,7 +36,7 @@ in
         };
 
         initial_session = lib.mkIf cfg.enable {
-          command = "${pkgs.hyprland}/bin/Hyprland";
+          command = "${pkgs.unstable.hyprland}/bin/Hyprland";
           user = "${cfg.username}";
         };
       };
