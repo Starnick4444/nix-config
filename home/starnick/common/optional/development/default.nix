@@ -50,7 +50,6 @@ in
           # nixpkgs-review
           # networking
           # nmap
-          wireshark
           # cross-compilation
           cargo-cross
           # Diffing
@@ -72,7 +71,10 @@ in
       #      }
       #    ))
     ]
-    ++ [ pkgs.jetbrains.datagrip ];
+    ++ [
+      pkgs.jetbrains.datagrip
+      pkgs.unstable.wireshark
+    ];
 
   #NOTE: Already enabled earlier, this is just extra config
   programs.git = {
