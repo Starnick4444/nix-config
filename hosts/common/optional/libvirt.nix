@@ -21,6 +21,7 @@ in
     enable = true;
     qemu = {
       package = pkgs.qemu_kvm;
+      vhostUserPackages = [ pkgs.virtiofsd ];
       runAsRoot = true;
       # HW TPM Emulation (need to check what systems I have already have hw TPM that could be used)
       #swtpm.enable = true;
@@ -66,7 +67,11 @@ in
             ipv6 = false;
             ip =
               let
-                subnet = inputs.nix-secrets.networking.subnets.vm-lan;
+                # subnet = inputs.nix-secrets.networking.subnets.vm-lan;
+                subnet = {
+                  gateway = "192.168.2.1";
+                  triplet = "192.168.2";
+                };
               in
               {
                 address = subnet.gateway;

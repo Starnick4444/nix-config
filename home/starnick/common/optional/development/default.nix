@@ -59,6 +59,8 @@ in
           # Standard man pages for linux API
           # man-pages
           # man-pages-posix
+          ghidra
+          mitmproxy
           ;
       })
 
