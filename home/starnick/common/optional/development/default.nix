@@ -61,6 +61,7 @@ in
           # man-pages-posix
           ghidra
           mitmproxy
+          rsbkb
           ;
       })
 
