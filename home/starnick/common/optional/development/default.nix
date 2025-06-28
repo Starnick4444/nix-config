@@ -59,7 +59,6 @@ in
           # Standard man pages for linux API
           # man-pages
           # man-pages-posix
-          ghidra
           mitmproxy
           rsbkb
           ;
@@ -75,6 +74,7 @@ in
       #    ))
     ]
     ++ [
+      pkgs.unstable.ghidra
       pkgs.jetbrains.datagrip
       pkgs.unstable.wireshark
     ];
