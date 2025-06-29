@@ -22,7 +22,7 @@ in
     ./bash.nix
     ./bat.nix
     ./direnv.nix
-    ./fonts.nix
+    # ./fonts.nix
     ./git.nix
     ./kitty.nix
     ./screen.nix

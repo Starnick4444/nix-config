@@ -2,10 +2,10 @@
 {
   # TODO add ttf-font-awesome or font-awesome for waybar
   fontProfiles = {
-    enable = false;
+    enable = true;
     monospace = {
       family = "FiraCode Nerd Font";
-      package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+      package = pkgs.nerd-fonts.fira-code;
     };
     regular = {
       family = "Fira Sans";
