@@ -61,6 +61,7 @@ in
           # man-pages-posix
           mitmproxy
           rsbkb
+          wireshark
           ;
       })
 
@@ -76,7 +77,6 @@ in
     ++ [
       pkgs.unstable.ghidra
       pkgs.jetbrains.datagrip
-      pkgs.unstable.wireshark
     ];
 
   #NOTE: Already enabled earlier, this is just extra config
