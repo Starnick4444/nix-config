@@ -62,6 +62,7 @@ in
           mitmproxy
           rsbkb
           wireshark
+          ltrace
           ;
       })
 
