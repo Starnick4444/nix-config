@@ -136,7 +136,7 @@
     powerOnBoot = true;
   };
 
-  environment.systemPackages = with pkgs; [ bluedevil ];
+  environment.systemPackages = with pkgs; [ kdePackages.bluedevil ];
 
   #TODO(stylix): move this stuff to separate file but define theme itself per host
   # host-wide styling
