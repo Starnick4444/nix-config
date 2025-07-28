@@ -303,42 +303,20 @@ in
         };
       };
 
-    spawn-at-startup =
-      let
-        waybar-config = toString config.xdg.configFile."waybar/config".source;
-        waybar-style = toString config.xdg.configFile."waybar/style.css".source;
-      in
-      [
-        {
-          command = [
-            (lib.getExe pkgs.waybar)
-            "-c"
-            waybar-config
-            "-s"
-            waybar-style
-          ];
-        }
-        # {
-        #   command = [ (lib.getExe pkgs.spotify) ];
-        # }
-        {
-          command = [ (lib.getExe pkgs.vesktop) ];
-        }
-        {
-          command = [
-            (lib.getExe pkgs.waypaper)
-            "--restore"
-          ];
-        }
-        /*
-          {
-            command = [
-              (lib.getExe pkgs.xwayland-satellite-unstable)
-              ":$n"
-            ];
-          }
-        */
-      ];
+    spawn-at-startup = [
+      {
+        command = [ (lib.getExe pkgs.spotify) ];
+      }
+      {
+        command = [ (lib.getExe pkgs.vesktop) ];
+      }
+      {
+        command = [
+          (lib.getExe pkgs.waypaper)
+          "--restore"
+        ];
+      }
+    ];
   };
 
   home.packages = with pkgs; [
