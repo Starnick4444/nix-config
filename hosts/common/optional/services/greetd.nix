@@ -36,7 +36,7 @@ in
         };
 
         initial_session = lib.mkIf cfg.enable {
-          command = "${pkgs.niri-stable}/bin/niri --session";
+          command = "${pkgs.niri-unstable}/bin/niri --session";
           user = "${cfg.username}";
         };
       };

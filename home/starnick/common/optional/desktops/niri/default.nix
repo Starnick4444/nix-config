@@ -269,7 +269,7 @@ in
         place-within-backdrop = true;
       }
     ];
-    # xwayland-satellite.path = "${lib.getExe pkgs.xwayland-satellite-unstable}";
+    xwayland-satellite.path = "${lib.getExe pkgs.xwayland-satellite-unstable}";
 
     # personal settings, maybe per machine?
     # TODO: idk what is the layout called
@@ -330,16 +330,15 @@ in
             "--restore"
           ];
         }
-        {
-          command = [
-            (lib.getExe pkgs.xwayland-satellite)
-          ];
-        }
+        /*
+          {
+            command = [
+              (lib.getExe pkgs.xwayland-satellite-unstable)
+              ":$n"
+            ];
+          }
+        */
       ];
-
-    environment = {
-      DISPLAY = ":0";
-    };
   };
 
   home.packages = with pkgs; [
