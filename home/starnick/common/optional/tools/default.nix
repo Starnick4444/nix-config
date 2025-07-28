@@ -12,7 +12,7 @@
         #etcher #was disabled in nixpkgs due to dependency on insecure version of Electron
         # Productivity
         drawio
-        grimblast
+        # grimblast # Hyprland screenshot ultility
         libreoffice
         # Privacy
         #veracrypt

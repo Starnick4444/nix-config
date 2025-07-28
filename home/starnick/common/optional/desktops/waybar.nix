@@ -8,7 +8,7 @@
     enable = true;
     systemd = {
       enable = true;
-      target = "hyprland-session.target"; # NOTE = hyprland/default.nix stops graphical-session.target and starts hyprland-sessionl.target
+      # target = "hyprland-session.target"; # NOTE = hyprland/default.nix stops graphical-session.target and starts hyprland-sessionl.target
     };
     settings = {
       #
@@ -22,9 +22,13 @@
         output = map (m: "${m.name}") (config.monitors);
 
         modules-left = [
-          "hyprland/workspaces"
+          # "hyprland/workspaces"
+          "niri/workspaces"
         ];
-        modules-center = [ "hyprland/window" ];
+        modules-center = [
+          # "hyprland/window"
+          "niri/window"
+        ];
         modules-right = [
           "gamemode"
           "pulseaudio"
@@ -43,11 +47,16 @@
         #TODO
         #"hyprland/window" ={};
 
-        "hyprland/workspaces" = {
-          all-outputs = false;
-          disable-scroll = true;
-          on-click = "actviate";
-          show-special = true; # display special workspaces along side regular ones (scratch for example)
+        /*
+          "hyprland/workspaces" = {
+            all-outputs = false;
+            disable-scroll = true;
+            on-click = "actviate";
+            show-special = true; # display special workspaces along side regular ones (scratch for example)
+          };
+        */
+        "niri/workspaces" = {
+          format = "{index}";
         };
         "clock#time" = {
           interval = 1;

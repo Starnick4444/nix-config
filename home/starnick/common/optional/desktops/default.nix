@@ -3,7 +3,8 @@
   imports = [
     # Packages with custom configs go here
 
-    ./hyprland
+    # ./hyprland
+    ./niri
 
     ########## Utilities ##########
     ./services/dunst.nix # Notification daemon

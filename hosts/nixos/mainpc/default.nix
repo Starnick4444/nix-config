@@ -28,6 +28,7 @@
     # ========== Misc Inputs ==========
     #
     inputs.stylix.nixosModules.stylix
+    inputs.niri.nixosModules.niri
 
     (map lib.custom.relativeToRoot [
       #
@@ -42,7 +43,8 @@
       # "hosts/common/optional/services/openssh.nix" # allow remote SSH access
       "hosts/common/optional/services/printing.nix" # CUPS
       "hosts/common/optional/audio.nix" # pipewire and cli controls
-      "hosts/common/optional/hyprland.nix" # window manager
+      # "hosts/common/optional/hyprland.nix" # window manager
+      "hosts/common/optional/niri.nix"
       "hosts/common/optional/nvtop.nix" # GPU monitor (not available in home-manager)
       "hosts/common/optional/obsidian.nix" # wiki
       "hosts/common/optional/plymouth.nix" # fancy boot screen

@@ -46,7 +46,10 @@
               (
                 { pkgs, ... }:
                 {
-                  nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
+                  nixpkgs.overlays = [
+                    inputs.rust-overlay.overlays.default
+                    inputs.niri.overlays.niri
+                  ];
                   environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
                 }
               )
@@ -190,6 +193,8 @@
       url = "github:Beastwick18/nyaa";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri.url = "github:sodiboo/niri-flake";
 
     #
     # ========= Personal Repositories =========
