@@ -89,6 +89,12 @@ in
       init.defaultBranch = "main";
     };
   };
+  programs.jujutsu.settings = {
+    user = {
+      email = "nemes.bence1@gmail.com";
+      name = "Starnick4444";
+    };
+  };
   /*
     programs.git = {
       # userName = config.hostSpec.handle;
