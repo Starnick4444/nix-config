@@ -6,12 +6,18 @@
     inherit (pkgs)
       ffmpeg
       spotify
-      mpv
       qbittorrent
       stremio
       ;
     inherit (pkgs.stable)
       calibre
       ;
+  };
+
+  programs.mpv = {
+    enable = true;
+    config = {
+      sub-scale = 0.72;
+    };
   };
 }
