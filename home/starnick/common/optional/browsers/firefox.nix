@@ -103,7 +103,7 @@ in
 
     profiles.main = {
       id = 0;
-      name = "EmergentMind";
+      name = "starnick";
       isDefault = true;
 
       # FIXME(firefox): These should probably be in a let .. in block so I can re-use if I setup

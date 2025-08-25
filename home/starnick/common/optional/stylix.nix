@@ -8,6 +8,7 @@
     targets = {
       hyprlock.enable = false;
       nixvim.enable = false;
+      firefox.profileNames = [ "main" ];
     };
   };
 }

@@ -56,7 +56,9 @@
         };
     };
     # program specific exclusions
-    targets.nixvim.enable = false;
+    targets = {
+      nixvim.enable = false;
+    };
   };
 
   home-manager.sharedModules = [
