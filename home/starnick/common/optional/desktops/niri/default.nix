@@ -269,7 +269,7 @@ in
         place-within-backdrop = true;
       }
     ];
-    xwayland-satellite.path = "${lib.getExe pkgs.xwayland-satellite-unstable}";
+    xwayland-satellite.path = "${lib.getExe pkgs.unstable.xwayland-satellite}";
 
     # personal settings, maybe per machine?
     # TODO: idk what is the layout called

@@ -12,6 +12,6 @@
     libsecret
     cage
     gamescope
-    xwayland-satellite-unstable
+    unstable.xwayland-satellite
   ];
 }
