@@ -49,6 +49,8 @@
           jsonls.enable = true;
           postgres_lsp.enable = true;
           buf_ls.enable = true;
+          terraformls.enable = true;
+          helm_ls.enable = true;
           # python type checker pyright.enable = true;
           # generic sql lsp sqls.enable = true;
         };
