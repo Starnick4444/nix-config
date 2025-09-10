@@ -63,6 +63,7 @@ in
           rsbkb
           wireshark
           ltrace
+          terraform
           ;
       })
 
