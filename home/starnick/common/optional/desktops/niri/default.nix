@@ -68,7 +68,7 @@ in
 
       empty-workspace-above-first = true;
 
-      shadow.enable = true;
+      shadow.enable = false;
 
       tab-indicator = {
         position = "top";
@@ -264,7 +264,7 @@ in
         block-out-from = "screencast";
       }
       {
-        matches = [ { namespace = "^swww-daemonoverview$"; } ];
+        matches = [ { namespace = "swww-daemon"; } ];
 
         place-within-backdrop = true;
       }
@@ -287,6 +287,7 @@ in
       default-column-width = {
         proportion = 1.0 / 3.0;
       };
+      background-color = "transparent";
     };
 
     outputs =

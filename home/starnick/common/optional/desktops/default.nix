@@ -20,4 +20,6 @@
     pkgs.wl-clipboard # wayland copy and paste
     pkgs.galculator # gtk based calculator
   ];
+
+  services.swww.enable = true;
 }
