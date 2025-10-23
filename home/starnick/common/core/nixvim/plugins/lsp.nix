@@ -46,6 +46,7 @@
           helm_ls.enable = true;
           # python type checker pyright.enable = true;
           # generic sql lsp sqls.enable = true;
+          ts_ls.enable = true;
         };
       };
     };
