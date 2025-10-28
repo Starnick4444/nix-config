@@ -33,6 +33,15 @@
           ""
         ];
       };
+      ui = {
+        diff-formatter = [
+          "difft"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
+      };
     };
   };
+  home.packages = [ pkgs.difftastic ];
 }
