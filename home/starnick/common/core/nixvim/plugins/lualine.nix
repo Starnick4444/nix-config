@@ -12,7 +12,10 @@
         lualine_a = [ "mode" ];
         lualine_b = [ "branch" ];
         lualine_c = [
-          "filename"
+          {
+            __unkeyed-1 = "filename";
+            path = 4;
+          }
           "diff"
         ];
 
