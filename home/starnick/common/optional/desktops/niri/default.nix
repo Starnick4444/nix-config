@@ -295,12 +295,20 @@ in
         cfg = config.programs.niri.settings.outputs;
       in
       {
+        "DP-1" = {
+          mode.width = 2560;
+          mode.height = 1440;
+          mode.refresh = 180.0;
+          position.x = 0;
+          position.y = 0;
+          focus-at-startup = true;
+        };
         "HDMI-A-1" = {
           mode.width = 1920;
           mode.height = 1080;
           mode.refresh = 75.0;
-          position.x = 0;
-          position.y = -cfg."HDMI-A-1".mode.height;
+          position.x = cfg."DP-1".mode.width;
+          position.y = 0;
         };
       };
 
@@ -318,6 +326,10 @@ in
         ];
       }
     ];
+
+    debug = {
+      keep-max-bpc-unchanged = true;
+    };
   };
 
   home.packages = with pkgs; [
