@@ -63,6 +63,9 @@ let
     cat = "bat";
     fd = "fd -L";
     cd = "z";
+
+    js = "jj status";
+    jd = "jj diff";
   };
 in
 {
