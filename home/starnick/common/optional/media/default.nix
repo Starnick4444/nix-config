@@ -7,7 +7,7 @@
       ffmpeg
       spotify
       qbittorrent
-      stremio
+      # stremio # insecure dependencies
       ;
     inherit (pkgs.stable)
       calibre

@@ -126,22 +126,22 @@
     #
     # ========= Official NixOS, Darwin, and HM Package Sources =========
     #
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     # The next two are for pinning to stable vs unstable regardless of what the above is set to
     # This is particularly useful when an upcoming stable release is in beta because you can effectively
     # keep 'nixpkgs-stable' set to stable for critical packages while setting 'nixpkgs' to the beta branch to
     # get a jump start on deprecation changes.
     # See also 'stable-packages' and 'unstable-packages' overlays at 'overlays/default.nix"
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
@@ -180,7 +180,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Theming
-    stylix.url = "github:nix-community/stylix/release-25.05";
+    stylix.url = "github:nix-community/stylix/release-25.11";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
 
     # Rust
