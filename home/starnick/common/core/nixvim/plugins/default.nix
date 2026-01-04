@@ -43,6 +43,8 @@
 
       web-devicons.enable = true;
 
+      neoconf.enable = true;
+
       which-key = {
         enable = true;
         settings = {
