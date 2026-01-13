@@ -19,6 +19,7 @@ in
     ./${platform}.nix
     ./fish
     ./nixvim
+    ./helix.nix
     ./bash.nix
     ./bat.nix
     ./direnv.nix
