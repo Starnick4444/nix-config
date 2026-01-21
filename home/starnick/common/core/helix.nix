@@ -14,6 +14,7 @@
       marksman
       nil
       rust-analyzer
+      typescript-language-server
     ];
   };
 }
