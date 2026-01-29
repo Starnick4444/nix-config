@@ -47,8 +47,8 @@ in
       SHELL = "fish";
       TERM = "kitty";
       TERMINAL = "kitty";
-      VISUAL = "nvim";
-      EDITOR = "nvim";
+      VISUAL = "hx";
+      EDITOR = "hx";
       # MANPAGER = "batman"; # see ./cli/bat.nix
     };
     preferXdgDirectories = true; # whether to make programs use XDG directories whenever supported

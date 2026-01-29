@@ -52,7 +52,7 @@
       "hosts/common/optional/mpv.nix" # media player
       "hosts/common/optional/wayland.nix" # wayland components and pkgs not available in home-manager
       "hosts/common/optional/gaming.nix"
-      # "hosts/common/optional/libvirt.nix"
+      "hosts/common/optional/libvirt.nix"
     ])
   ];
 

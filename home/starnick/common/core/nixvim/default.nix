@@ -10,7 +10,7 @@
   ];
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
     # nixpkgs.pkgs = import inputs.nixpkgs-unstable {};
     # nixpkgs.useGlobalPackages = true;
     defaultEditor = true;

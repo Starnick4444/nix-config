@@ -2,7 +2,7 @@
 let
   # FIXME(xdg): That should use config options and just reference whatever is configured as the default
   browser = [ "firefox.desktop" ];
-  editor = [ "nvim.desktop" ];
+  editor = [ "hx.desktop" ];
   media = [ "mpv.desktop" ];
   writer = [ "libreoffice-writer.desktop" ];
   spreadsheet = [ "libreoffice-calc.desktop" ];
