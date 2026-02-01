@@ -174,6 +174,14 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  virtualisation.docker = {
+    # enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
   zramSwap.enable = true;
 
   #hyprland border override example

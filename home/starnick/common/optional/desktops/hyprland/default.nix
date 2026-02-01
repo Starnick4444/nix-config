@@ -165,10 +165,10 @@
       # exec-once = ''${startupScript}/path'';
       # To determine path, run `which foo`
       exec-once = [
-        ''${pkgs.waypaper}/bin/waypaper --restore''
-        ''[workspace 1 silent]${pkgs.spotify}/bin/spotify''
-        ''[workspace 2 silent]${pkgs.vesktop}/bin/vesktop''
-        ''[workspace 3 silent]${pkgs.kitty}/bin/kitty''
+        "${pkgs.waypaper}/bin/waypaper --restore"
+        "[workspace 1 silent]${pkgs.spotify}/bin/spotify"
+        "[workspace 2 silent]${pkgs.vesktop}/bin/vesktop"
+        "[workspace 3 silent]${pkgs.kitty}/bin/kitty"
       ];
       #
       # ========== Layer Rules ==========

@@ -72,7 +72,7 @@ in
 {
   programs.ssh =
     let
-      workConfig = if config.hostSpec.isWork then ''Include config.d/work'' else "";
+      workConfig = if config.hostSpec.isWork then "Include config.d/work" else "";
     in
     {
       enable = true;

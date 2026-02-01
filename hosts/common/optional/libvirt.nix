@@ -25,7 +25,7 @@ in
       runAsRoot = true;
       # HW TPM Emulation (need to check what systems I have already have hw TPM that could be used)
       #swtpm.enable = true;
-      
+
     };
   };
   virtualisation.libvirt = {
