@@ -26,6 +26,7 @@
       fastfetch
       onefetch
       pyfa # eve online fitting tool
+      fluent-reader
       ;
   };
   #Disabled for now. grimblast
