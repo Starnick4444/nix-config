@@ -139,6 +139,8 @@
     openFirewall = true;
   };
 
+  environment.systemPackages = [ inputs.dzgui.packages.x86_64-linux.dzgui ];
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

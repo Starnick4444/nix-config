@@ -196,6 +196,11 @@
 
     niri.url = "github:sodiboo/niri-flake";
 
+    dzgui = {
+      url = "github:jiriks74/dzgui.flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #
     # ========= Personal Repositories =========
     #
