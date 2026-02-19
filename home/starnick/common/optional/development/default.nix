@@ -64,6 +64,7 @@ in
           wireshark
           ltrace
           terraform
+          claude-code
           ;
       })
 
