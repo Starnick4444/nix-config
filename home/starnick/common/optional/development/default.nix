@@ -41,6 +41,7 @@ in
           # glab # gitlab cli
           yq-go # Parser for Yaml and Toml Files, that mirrors jq
           postman
+          bruno
           # "jetbrains.datagrip"
           nix-init
           # benchmarking

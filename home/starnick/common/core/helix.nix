@@ -4,6 +4,7 @@
     enable = true;
     settings = {
       editor = {
+        auto-format = true;
         line-number = "relative";
       };
       keys.normal = {

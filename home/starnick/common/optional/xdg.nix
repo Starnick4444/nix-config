@@ -127,6 +127,10 @@ in
   xdg.mimeApps.defaultApplications = associations;
   xdg.mimeApps.associations.removed = removals;
   xdg.mimeApps.associations.added = associations;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
