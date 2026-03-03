@@ -112,6 +112,9 @@
       "nvidia-drm.fbdev=1"
       "nvidia-drm.modeset=1"
     ];
+    extraModprobeConfig = ''
+      options hid_apple fnmode=2
+    '';
 
     kernelPackages = pkgs.unstable.linuxPackages_latest;
 
