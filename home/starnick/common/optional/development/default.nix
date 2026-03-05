@@ -65,7 +65,6 @@ in
           wireshark
           ltrace
           terraform
-          claude-code
           ;
       })
 
@@ -81,6 +80,7 @@ in
     ++ [
       pkgs.unstable.ghidra
       pkgs.jetbrains.datagrip
+      pkgs.unstable.claude-code
     ];
 
   #NOTE: Already enabled earlier, this is just extra config
