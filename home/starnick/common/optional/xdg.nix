@@ -129,7 +129,7 @@ in
   xdg.mimeApps.associations.added = associations;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
   };
 
   home.packages = builtins.attrValues {
