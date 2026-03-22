@@ -250,6 +250,16 @@ in
           ];
           block-out-from = "screencast";
         }
+        {
+          matches = [
+            {
+              app-id = "spotify";
+            }
+            { app-id = "vesktop"; }
+          ];
+          open-on-output = "HDMI-A-1";
+          open-maximized = true;
+        }
       ];
     gestures.dnd-edge-view-scroll = {
       trigger-width = 64;
