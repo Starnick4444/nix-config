@@ -8,11 +8,11 @@
     enable = true;
     image = lib.custom.relativeToRoot "assets/wallpapers/zen-01.png";
     #      base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 
     opacity = {
-      terminal = 0.8;
-      popups = 0.8;
+      terminal = 0.9;
+      popups = 0.9;
     };
 
     cursor = {
