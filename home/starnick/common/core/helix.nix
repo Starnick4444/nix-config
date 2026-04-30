@@ -14,7 +14,7 @@
     extraPackages = with pkgs; [
       marksman
       nil
-      rust-analyzer
+      unstable.rust-analyzer
       typescript-language-server
     ];
   };
