@@ -260,6 +260,16 @@ in
           open-on-output = "HDMI-A-1";
           open-maximized = true;
         }
+        {
+          matches = [
+            {
+              app-id = "^firefox$";
+            }
+          ];
+          default-column-width = {
+            proportion = 1.0 / 2.0;
+          };
+        }
       ];
     gestures.dnd-edge-view-scroll = {
       trigger-width = 64;
