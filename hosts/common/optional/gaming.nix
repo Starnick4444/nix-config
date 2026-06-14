@@ -13,13 +13,6 @@
         extraPkgs =
           pkgs:
           (builtins.attrValues {
-            inherit (pkgs.xorg)
-              libXcursor
-              libXi
-              libXinerama
-              libXScrnSaver
-              ;
-
             inherit (pkgs.stdenv.cc.cc)
               lib
               ;
@@ -29,6 +22,10 @@
               libpulseaudio
               libvorbis
               libkrb5
+              libXcursor
+              libXi
+              libXinerama
+              libXScrnSaver
               keyutils
               gperftools
               ;

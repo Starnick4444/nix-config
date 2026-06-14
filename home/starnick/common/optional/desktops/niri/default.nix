@@ -284,7 +284,7 @@ in
         block-out-from = "screencast";
       }
       {
-        matches = [ { namespace = "swww-daemon"; } ];
+        matches = [ { namespace = "awww-daemon"; } ];
 
         place-within-backdrop = true;
       }
@@ -346,10 +346,6 @@ in
         ];
       }
     ];
-
-    debug = {
-      keep-max-bpc-unchanged = true;
-    };
   };
 
   home.packages = with pkgs; [

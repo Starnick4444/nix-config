@@ -71,8 +71,8 @@ in
 
       extraConfig = {
         # publicshare and templates defined as null here instead of as options because
-        XDG_PUBLICSHARE_DIR = "/var/empty";
-        XDG_TEMPLATES_DIR = "/var/empty";
+        PUBLICSHARE = "/var/empty";
+        TEMPLATES = "/var/empty";
       };
     };
   };
@@ -142,7 +142,6 @@ in
         fzf # fuzzy search
         jq # json pretty printer and manipulator
         nix-tree # nix package tree viewer
-        neofetch # fancier system info than pfetch
         ncdu # TUI disk usage
         pciutils
         pfetch # system info

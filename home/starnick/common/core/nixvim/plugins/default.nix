@@ -79,7 +79,7 @@
     # TODO: move this to own module
     extraConfigLuaPre =
       let
-        nixfmtPath = lib.getExe pkgs.nixfmt-rfc-style;
+        nixfmtPath = lib.getExe pkgs.nixfmt;
         alejandraPath = lib.getExe pkgs.alejandra;
       in
       ''
@@ -114,7 +114,7 @@
   };
 
   home.packages = with pkgs; [
-    nixfmt-rfc-style
+    nixfmt
     alejandra
   ];
 }

@@ -21,5 +21,5 @@
     pkgs.galculator # gtk based calculator
   ];
 
-  services.swww.enable = true;
+  services.awww.enable = true;
 }
