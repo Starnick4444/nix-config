@@ -17,6 +17,9 @@ let
   linuxModifications = final: prev: prev.lib.optionalAttrs prev.stdenv.isLinux { };
 
   modifications = final: prev: {
+    vesktop = prev.vesktop.override {
+      pnpm_10_29_2 = final.pnpm_10;
+    };
     # example = prev.example.overrideAttrs (oldAttrs: let ... in {
     # ...
     # });
