@@ -11,7 +11,6 @@
       #etcher #was disabled in nixpkgs due to dependency on insecure version of Electron
       # Productivity
       drawio
-      # grimblast # Hyprland screenshot ultility
       libreoffice
       # Privacy
       #veracrypt
@@ -25,13 +24,7 @@
       # remmina
       fastfetch
       onefetch
-      pyfa # eve online fitting tool
       fluent-reader
       ;
   };
-  #Disabled for now. grimblast
-  #  services.flameshot = {
-  #      enable = true;
-  #     package = flameshotGrim;
-  #  };
 }
