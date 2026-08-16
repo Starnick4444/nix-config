@@ -315,7 +315,7 @@ in
         cfg = config.programs.niri.settings.outputs;
       in
       {
-        "DP-1" = {
+        "DP-3" = {
           mode.width = 2560;
           mode.height = 1440;
           mode.refresh = 180.0;
@@ -327,7 +327,7 @@ in
           mode.width = 1920;
           mode.height = 1080;
           mode.refresh = 75.0;
-          position.x = cfg."DP-1".mode.width;
+          position.x = cfg."DP-3".mode.width;
           position.y = 0;
         };
       };

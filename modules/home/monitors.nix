@@ -7,7 +7,7 @@
         options = {
           name = lib.mkOption {
             type = lib.types.str;
-            example = "DP-1";
+            example = "DP-3";
           };
           primary = lib.mkOption {
             type = lib.types.bool;
