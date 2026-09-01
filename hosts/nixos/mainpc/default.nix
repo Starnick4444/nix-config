@@ -151,6 +151,8 @@
     };
   };
 
+  users.users.${config.hostSpec.username}.linger = true;
+
   zramSwap.enable = true;
 
   #hyprland border override example

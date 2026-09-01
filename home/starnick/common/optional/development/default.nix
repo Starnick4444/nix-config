@@ -42,7 +42,6 @@ in
           yq-go # Parser for Yaml and Toml Files, that mirrors jq
           postman
           bruno
-          # "jetbrains.datagrip"
           nix-init
           # benchmarking
           heaptrack
@@ -79,7 +78,6 @@ in
     ]
     ++ [
       pkgs.unstable.ghidra
-      pkgs.jetbrains.datagrip
       pkgs.unstable.claude-code
     ];
 
