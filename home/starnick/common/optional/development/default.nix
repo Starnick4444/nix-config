@@ -64,6 +64,9 @@ in
           wireshark
           ltrace
           terraform
+
+          # microcontrollers
+          stm32cubemx
           ;
       })
 

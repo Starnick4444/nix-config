@@ -24,6 +24,7 @@ in
     extraGroups = lib.flatten [
       "wheel"
       "wireshark"
+      "plugdev"
       (ifTheyExist [
         "audio"
         "video"

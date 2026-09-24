@@ -136,7 +136,9 @@
     openFirewall = true;
   };
 
-  environment.systemPackages = [ inputs.dzgui.packages.x86_64-linux.dzgui ];
+  environment.systemPackages = [ pkgs.probe-rs-tools ];
+  services.udev.packages = [ pkgs.probe-rs-tools ];
+  users.groups.plugdev = { };
 
   hardware.graphics = {
     enable = true;
