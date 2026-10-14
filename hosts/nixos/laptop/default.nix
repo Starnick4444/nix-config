@@ -55,6 +55,7 @@
       "hosts/common/optional/gaming.nix"
       "hosts/common/optional/thunar.nix" # file manager
       "hosts/common/optional/mpv.nix" # media player
+      "hosts/common/optional/obs.nix" # streaming/recording + virtual camera
       "hosts/common/optional/wayland.nix" # wayland components and pkgs not available in home-manager
     ])
   ];

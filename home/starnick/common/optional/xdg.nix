@@ -127,10 +127,7 @@ in
   xdg.mimeApps.defaultApplications = associations;
   xdg.mimeApps.associations.removed = removals;
   xdg.mimeApps.associations.added = associations;
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-  };
+  # portals are configured system-wide in hosts/common/optional/niri.nix
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
